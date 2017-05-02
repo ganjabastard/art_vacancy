@@ -1,4 +1,4 @@
-<ul class="navbar-nav">
+<ul id="main-menu" class="main-menu">
     <li class="">
         <a href="{{ url('application') }}">
             <i class="fa-bell-o"></i>
