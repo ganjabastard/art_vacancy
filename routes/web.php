@@ -35,6 +35,11 @@
             Route::resource('vacancy', 'VacancysController');
         });
 
+        // resume
+        Route::group(['middleware' => ['permission:resume']], function () {
+            Route::resource('resumes', 'ResumesController');
+        });
+
         Route::group(['middleware' => ['role:admin']], function () {
 
         });
