@@ -176,10 +176,8 @@
     </div>
 
     <div class="main-content">
-
         <nav class="navbar user-info-navbar"  role="navigation"><!-- User Info, Notifications and Menu Bar -->
             <ul class="user-info-menu left-links list-inline list-unstyled">
-
                 <li class="hidden-sm hidden-xs">
                     <a href="#" data-toggle="sidebar">
                         <i class="fa-bars"></i>
@@ -188,15 +186,6 @@
             </ul>
             @include('navigations.userinfo')
         </nav>
-
-        <div class="jumbotron">
-            <h1>Layout API</h1>
-            <p>
-                Xenon Theme layout can be combined in many variants with sidebar and horizontal menu and offers a set of toggles (links) to manipulate with the theme layout. These features are enabled if you import <code>js/xenon-toggles.js</code> script in the document.
-            </p>
-            <br />
-            <a class="btn btn-primary btn-lg" href="#layout-variants" role="button">See Layout Variants</a>
-        </div>
         @yield('pagetitle')
         <br />
 
