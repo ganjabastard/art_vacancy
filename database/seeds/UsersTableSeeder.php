@@ -35,7 +35,6 @@ class UsersTableSeeder extends Seeder
         foreach ($users as $key => $value) {
             $user = User::create($value);
             $user->roles()->sync([1]);
-//            $user->attachRole([1]);
         }
     }
 }

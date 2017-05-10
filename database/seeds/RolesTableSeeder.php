@@ -1,5 +1,6 @@
 <?php
 
+use App\Permission;
 use Illuminate\Database\Seeder;
 use App\Role;
 class RolesTableSeeder extends Seeder
@@ -18,9 +19,10 @@ class RolesTableSeeder extends Seeder
                 'description' => 'Полный доступ'
             ]
         ];
+        $permissions = Permission::all()->pluck('id');
         foreach ($roles as $key => $value) {
             $role = Role::create($value);
-            $role->permissions()->sync([1,2,3,4]);
+            $role->permissions()->sync($permissions);
         }
     }
 }

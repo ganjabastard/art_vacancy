@@ -56,3 +56,4 @@
             'password'   => $password ?: $password = bcrypt('123'),
         ];
     });
+

@@ -33,6 +33,21 @@
                     'display_name' => 'Вакансии',
                     'description'  => 'Доступ к созданию/редактированию раздела вакансий',
                 ],
+                [
+                    'name'         => 'resume',
+                    'display_name' => 'Резюму',
+                    'description'  => 'Доступ к созданию/редактированию раздела резюму',
+                ],
+                [
+                    'name'         => 'interviews',
+                    'display_name' => 'Собеседования',
+                    'description'  => 'Доступ к созданию/редактированию раздела собеседования',
+                ],
+                [
+                    'name'         => 'archive',
+                    'display_name' => 'Архив',
+                    'description'  => 'Доступ к созданию/редактированию раздела архив',
+                ],
             ];
 
             foreach ($permission as $key => $value) {
