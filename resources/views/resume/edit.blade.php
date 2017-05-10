@@ -76,13 +76,6 @@
                 </div>
             </div>
             <div class="form-group-separator __web-inspector-hide-shortcut__"></div>
-            <div class="form-group">
-                {{ Form::label('active', 'Активен', ['class' => 'control-label col-sm-2']) }}
-                <div class="col-sm-10">
-                    {{  Form::checkbox('active', 1, (isset($vacancy->active) && $vacancy->active == 1 ? 1 : 0), ['class' => 'iswitch iswitch-secondary','data-message-required' => 'Поле обязательно для заполнения', "placeholder" => 'Активен'])}}
-                </div>
-            </div>
-            <div class="form-group-separator __web-inspector-hide-shortcut__"></div>
             <div class="col-xs-12">
                 <div class="form-group">
                     <a href="{{ url('vacancy') }}" class="btn btn-white"><span class="fa-arrow-left"></span> Назад</a>

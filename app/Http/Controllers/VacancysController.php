@@ -46,6 +46,7 @@ class VacancysController extends Controller
         $vacancy->age_start   = $request->age_start;
         $vacancy->age_end     = $request->age_end;
         $vacancy->status      = $request->status;
+        $vacancy->active      = isset($request->active) ? 1 : 0;
         $vacancy->save();
         return redirect('vacancy')->with('success', 'Вакансия успешно создана.');
     }
@@ -90,6 +91,7 @@ class VacancysController extends Controller
         $vacancy->age_start   = $request->age_start;
         $vacancy->age_end     = $request->age_end;
         $vacancy->status      = $request->status;
+        $vacancy->active      = isset($request->active) ? 1 : 0;
         $vacancy->save();
         return redirect('vacancy')->with('success', 'Вакансия успешно обновлена.');
     }

@@ -15,6 +15,7 @@ class CreateVacancy extends Migration
     {
         Schema::create('vacancies', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('active')->unsigned()->default(1);
             $table->integer('user_id')->unsigned();
             $table->text('title',128);
             $table->text('description');

@@ -8,7 +8,7 @@
     <li>
         <a href="{{ url('resume') }}">
             <i class="fa-male"></i>
-            <span class="title">Резюму</span>
+            <span class="title">Резюме</span>
         </a>
     </li>
     <li>
