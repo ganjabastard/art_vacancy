@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Resume;
+use App\Models\Vacancy;
 use Illuminate\Http\Request;
 
 class ResumesController extends Controller
@@ -11,9 +13,11 @@ class ResumesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $resumes = new Resume();
+        $resumes = $resumes->paginate(10);
+        return view('resume.index', compact('resumes', 'request'));
     }
 
     /**
@@ -23,7 +27,8 @@ class ResumesController extends Controller
      */
     public function create()
     {
-        //
+        $vacancy = Vacancy::isActive()->get()->pluck('title', 'id');
+        return view('resume.create', compact('vacancy'));
     }
 
     /**
@@ -34,7 +39,16 @@ class ResumesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $resume              = new Resume();
+        $resume->vacancy_id  = $request->vacancy_id;
+        $resume->name        = $request->name;
+        $resume->user_id     = auth()->user()->id;
+        $resume->descripion  = $request->descripion;
+        $resume->experience  = $request->experience;
+        $resume->education   = $request->education;
+        $resume->university  = $request->university;
+        $resume->save();
+        return redirect('resume')->with('success', 'Резюме успешно создано.');
     }
 
     /**
