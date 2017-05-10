@@ -23,7 +23,7 @@ class ClientRequest extends FormRequest
      */
     public function rules()
     {
-        $email = $this->get('id') != '' ? 'required|max:255|unique:clients,email,'.$this->get('id').',id' : 'required|max:255|unique:clients,email';
+        $email = $this->get('id') != '' ? 'required|max:255|unique:vacancy,email,'.$this->get('id').',id' : 'required|max:255|unique:vacancy,email';
         return [
             'email' => $email,
             'lastName' => 'required',

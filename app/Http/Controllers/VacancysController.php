@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\VacancyRequest;
+use App\Models\Vacancy;
 use Illuminate\Http\Request;
 
 class VacancysController extends Controller
@@ -11,9 +13,11 @@ class VacancysController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        dd('123');
+        $vacancys = new Vacancy();
+        $vacancys = $vacancys->paginate(10);
+        return view('vacancy.index', compact('vacancys', 'request'));
     }
 
     /**
@@ -23,7 +27,7 @@ class VacancysController extends Controller
      */
     public function create()
     {
-        //
+        return view('vacancy.create');
     }
 
     /**
@@ -32,9 +36,18 @@ class VacancysController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(VacancyRequest $request)
     {
-        //
+        $vacancy              = new Vacancy();
+        $vacancy->title       = $request->title;
+        $vacancy->description = $request->description;
+        $vacancy->user_id     = auth()->user()->id;
+        $vacancy->experience  = $request->experience;
+        $vacancy->age_start   = $request->age_start;
+        $vacancy->age_end     = $request->age_end;
+        $vacancy->status      = $request->status;
+        $vacancy->save();
+        return redirect('vacancy')->with('success', 'Вакансия успешно создана.');
     }
 
     /**
@@ -56,7 +69,8 @@ class VacancysController extends Controller
      */
     public function edit($id)
     {
-        //
+        $vacancy = Vacancy::find($id);
+        return view('vacancy.edit', compact('vacancy'));
     }
 
     /**
@@ -66,9 +80,18 @@ class VacancysController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(VacancyRequest $request, $id)
     {
-        //
+        $vacancy              = Vacancy::find($id);
+        $vacancy->title       = $request->title;
+        $vacancy->description = $request->description;
+        $vacancy->user_id     = auth()->user()->id;
+        $vacancy->experience  = $request->experience;
+        $vacancy->age_start   = $request->age_start;
+        $vacancy->age_end     = $request->age_end;
+        $vacancy->status      = $request->status;
+        $vacancy->save();
+        return redirect('vacancy')->with('success', 'Вакансия успешно обновлена.');
     }
 
     /**

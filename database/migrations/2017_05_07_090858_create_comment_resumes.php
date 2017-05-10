@@ -35,6 +35,6 @@ class CreateCommentResumes extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('comments');
+        Schema::dropIfExists('comment_resumes');
     }
 }

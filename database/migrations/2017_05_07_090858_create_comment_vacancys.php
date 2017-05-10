@@ -13,7 +13,7 @@ class CreateCommentVacancys extends Migration
      */
     public function up()
     {
-        Schema::create('comment_vacancys', function (Blueprint $table) {
+        Schema::create('comment_vacancies', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->integer('vacancy_id')->unsigned();
@@ -22,7 +22,7 @@ class CreateCommentVacancys extends Migration
 
             $table->foreign('user_id')->references('id')->on('users')
                 ->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('vacancy_id')->references('id')->on('vacancys')
+            $table->foreign('vacancy_id')->references('id')->on('vacancies')
                 ->onUpdate('cascade')->onDelete('cascade');
 
         });
@@ -35,6 +35,6 @@ class CreateCommentVacancys extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('comments');
+        Schema::dropIfExists('comment_vacancies');
     }
 }

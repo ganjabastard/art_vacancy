@@ -21,7 +21,7 @@ class CreateResume extends Migration
             $table->integer('age')->unsigned();
             $table->timestamps();
 
-            $table->foreign('vacancy_id')->references('id')->on('vacancys')
+            $table->foreign('vacancy_id')->references('id')->on('vacancies')
                 ->onUpdate('cascade')->onDelete('cascade');
         });
     }
