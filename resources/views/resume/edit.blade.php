@@ -32,86 +32,84 @@
 
         <div class="panel-body">
             <div class="col-xs-6">
-            {{ Form::open(['url' => 'resume/' . $resume->id, 'method' => 'PUT', 'class' => 'validate form-horizontal', "novalidate" => 'novalidate']) }}
-            <br>
-            <div class="form-group">
-                {{ Form::label('name', 'Имя', ['class' => 'control-label col-sm-2']) }}
-                <div class="col-sm-10">
-                    {{  Form::text('name', $resume->name, ['class' => 'form-control', 'data-validate' => 'required', 'data-message-required' => 'Поле обязательно для заполнения', "placeholder" => 'Имя'])}}
-                </div>
-            </div>
-            <div class="form-group-separator __web-inspector-hide-shortcut__"></div>
-            <div class="form-group">
-                {{ Form::label('vacancy_id', 'Вакансия', ['class' => 'control-label col-sm-2']) }}
-                <div class="col-sm-10">
-                    {{ Form::select('vacancy_id', $vacancy, $resume->vacancy_id, ['class' => 'form-control', 'data-validate' => 'required', 'data-message-required' => 'Поле обязательно для заполнения']) }}
-                </div>
-            </div>
-            <div class="form-group-separator __web-inspector-hide-shortcut__"></div>
-            <div class="form-group">
-                {{ Form::label('description',  'Описание', ['class' => 'control-label col-sm-2']) }}
-                <div class="col-sm-10">
-                    {{  Form::textarea('description', $resume->description, ['class' => 'form-control', "placeholder" => 'Описание роли'])}}
-                </div>
-            </div>
-            <div class="form-group-separator __web-inspector-hide-shortcut__"></div>
-            <div class="form-group">
-                {{ Form::label('education', 'Образование', ['class' => 'control-label col-sm-2']) }}
-                <div class="col-sm-10">
-                    <select name="education" id="" class="form-control">
-                        <option value="1" @if($resume->education == 1) selected @endif>Среднее</option>
-                        <option value="2" @if($resume->education == 2) selected @endif>Высшие - специалист</option>
-                        <option value="3" @if($resume->education == 3) selected @endif>Высшие - бакалавр</option>
-                        <option value="4" @if($resume->education == 4) selected @endif>Высшие - магист</option>
-                        <option value="0" @if($resume->education == 0) selected @endif>Безобразования</option>
-                    </select>
-                </div>
-            </div>
-            <div class="form-group">
-                {{ Form::label('experience', 'Опыт работы в годах', ['class' => 'control-label col-sm-2']) }}
-                <div class="col-sm-10">
-                    {{  Form::number('experience', $resume->experience, ['class' => 'form-control', 'data-validate' => 'required', 'data-message-required' => 'Поле обязательно для заполнения', "placeholder" => 'Опыт работы в годах'])}}
-                </div>
-            </div>
-            <div class="form-group">
-                {{ Form::label('university', 'Университет', ['class' => 'control-label col-sm-2']) }}
-                <div class="col-sm-10">
-                    {{  Form::text('university', $resume->university, ['class' => 'form-control', "placeholder" => 'Университет'])}}
-                </div>
-            </div>
-            <div class="form-group-separator __web-inspector-hide-shortcut__"></div>
-            <div class="form-group">
-                {{ Form::label('status', 'Статус', ['class' => 'control-label col-sm-2']) }}
-                <div class="col-sm-10">
-                    <select name="status" id="" class="form-control">
-                        <option value="1" @if($resume->status == 1) selected @endif>Молодой</option>
-                        <option value="2" @if($resume->status == 2) selected @endif>Мало знает</option>
-                        <option value="3" @if($resume->status == 3) selected @endif>Надо подумать</option>
-                        <option value="4" @if($resume->status == 4) selected @endif>Отличный человек</option>
-                    </select>
-                </div>
-            </div>
-            <div class="form-group-separator __web-inspector-hide-shortcut__"></div>
-            <div class="form-group">
-                {{ Form::label('birthday', 'Опыт работы в годах', ['class' => 'control-label col-sm-2']) }}
-                <div class="col-sm-10">
-                    {{  Form::text('birthday', \Carbon\Carbon::parse($resume->birthday)->format('Y-m-d'), ['class' => 'form-control datepicker', 'data-validate' => 'required', 'data-message-required' => 'Поле обязательно для заполнения', "placeholder" => 'Дата рождения', 'data-format' => 'yyyy-mm-dd'])}}
-                </div>
-            </div>
-            <div class="form-group-separator __web-inspector-hide-shortcut__"></div>
-            <div class="col-xs-12">
+                {{ Form::open(['url' => 'resume/' . $resume->id, 'method' => 'PUT', 'class' => 'validate form-horizontal', "novalidate" => 'novalidate']) }}
+                <br>
                 <div class="form-group">
-                    <a href="{{ url('resume') }}" class="btn btn-white"><span class="fa-arrow-left"></span> Назад</a>
-                    <button type="reset" class="btn btn-gray"><span class="fa-refresh"></span> Сбросить</button>
-                    <button type="submit" class="btn btn-success"><span class="fa-save"></span> Сохранить</button>
-                    <a href="#"  onclick="jQuery('#modal-1').modal('show', {backdrop: 'fade'});" class="btn btn-danger"><span class="fa-bell"></span> Назначить собеседование</a>
+                    {{ Form::label('name', 'Имя', ['class' => 'control-label col-sm-2']) }}
+                    <div class="col-sm-10">
+                        {{  Form::text('name', $resume->name, ['class' => 'form-control', 'data-validate' => 'required', 'data-message-required' => 'Поле обязательно для заполнения', "placeholder" => 'Имя'])}}
+                    </div>
                 </div>
+                <div class="form-group-separator __web-inspector-hide-shortcut__"></div>
+                <div class="form-group">
+                    {{ Form::label('vacancy_id', 'Вакансия', ['class' => 'control-label col-sm-2']) }}
+                    <div class="col-sm-10">
+                        {{ Form::select('vacancy_id', $vacancy, $resume->vacancy_id, ['class' => 'form-control', 'data-validate' => 'required', 'data-message-required' => 'Поле обязательно для заполнения']) }}
+                    </div>
+                </div>
+                <div class="form-group-separator __web-inspector-hide-shortcut__"></div>
+                <div class="form-group">
+                    {{ Form::label('description',  'Описание', ['class' => 'control-label col-sm-2']) }}
+                    <div class="col-sm-10">
+                        {{  Form::textarea('description', $resume->description, ['class' => 'form-control', "placeholder" => 'Описание роли'])}}
+                    </div>
+                </div>
+                <div class="form-group-separator __web-inspector-hide-shortcut__"></div>
+                <div class="form-group">
+                    {{ Form::label('education', 'Образование', ['class' => 'control-label col-sm-2']) }}
+                    <div class="col-sm-10">
+                        <select name="education" id="" class="form-control">
+                            <option value="1" @if($resume->education == 1) selected @endif>Среднее</option>
+                            <option value="2" @if($resume->education == 2) selected @endif>Высшие - специалист</option>
+                            <option value="3" @if($resume->education == 3) selected @endif>Высшие - бакалавр</option>
+                            <option value="4" @if($resume->education == 4) selected @endif>Высшие - магист</option>
+                            <option value="0" @if($resume->education == 0) selected @endif>Безобразования</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{ Form::label('experience', 'Опыт работы в годах', ['class' => 'control-label col-sm-2']) }}
+                    <div class="col-sm-10">
+                        {{  Form::number('experience', $resume->experience, ['class' => 'form-control', 'data-validate' => 'required', 'data-message-required' => 'Поле обязательно для заполнения', "placeholder" => 'Опыт работы в годах'])}}
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{ Form::label('university', 'Университет', ['class' => 'control-label col-sm-2']) }}
+                    <div class="col-sm-10">
+                        {{  Form::text('university', $resume->university, ['class' => 'form-control', "placeholder" => 'Университет'])}}
+                    </div>
+                </div>
+                <div class="form-group-separator __web-inspector-hide-shortcut__"></div>
+                <div class="form-group">
+                    {{ Form::label('status', 'Статус', ['class' => 'control-label col-sm-2']) }}
+                    <div class="col-sm-10">
+                        <select name="status" id="" class="form-control">
+                            <option value="1" @if($resume->status == 1) selected @endif>Молодой</option>
+                            <option value="2" @if($resume->status == 2) selected @endif>Мало знает</option>
+                            <option value="3" @if($resume->status == 3) selected @endif>Надо подумать</option>
+                            <option value="4" @if($resume->status == 4) selected @endif>Отличный человек</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group-separator __web-inspector-hide-shortcut__"></div>
+                <div class="form-group">
+                    {{ Form::label('birthday', 'Опыт работы в годах', ['class' => 'control-label col-sm-2']) }}
+                    <div class="col-sm-10">
+                        {{  Form::text('birthday', \Carbon\Carbon::parse($resume->birthday)->format('Y-m-d'), ['class' => 'form-control datepicker', 'data-validate' => 'required', 'data-message-required' => 'Поле обязательно для заполнения', "placeholder" => 'Дата рождения', 'data-format' => 'yyyy-mm-dd'])}}
+                    </div>
+                </div>
+                <div class="form-group-separator __web-inspector-hide-shortcut__"></div>
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <a href="{{ url('resume') }}" class="btn btn-white"><span class="fa-arrow-left"></span> Назад</a>
+                        <button type="reset" class="btn btn-gray"><span class="fa-refresh"></span> Сбросить</button>
+                        <button type="submit" class="btn btn-success"><span class="fa-save"></span> Сохранить</button>
+                        <a href="#"  onclick="jQuery('#modal-1').modal('show', {backdrop: 'fade'});" class="btn btn-danger"><span class="fa-bell"></span> Назначить собеседование</a>
+                    </div>
+                </div>
+                {{ Form::close() }}
             </div>
-            {{ Form::close() }}
-            </div>
-
             <div class="col-sm-6 profile-env">
-
                 <!-- User Post form and Timeline -->
                 <form method="post" action="" class="profile-post-form">
                     <textarea class="form-control input-unstyled input-lg autogrow" placeholder="What's on your mind?"></textarea>
