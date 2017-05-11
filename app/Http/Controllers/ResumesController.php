@@ -28,7 +28,7 @@ class ResumesController extends Controller
      */
     public function create()
     {
-        $vacancy = Vacancy::isActive()->get()->pluck('title', 'id');
+        $vacancy = Vacancy::isActive()->with('vacancy')->get()->pluck('title', 'id');
         return view('resume.create', compact('vacancy'));
     }
 
@@ -49,6 +49,7 @@ class ResumesController extends Controller
         $resume->education   = $request->education;
         $resume->university  = $request->university;
         $resume->birthday    = $request->birthday;
+        $resume->status      = $request->status;
         $resume->save();
         return redirect('resume')->with('success', 'Резюме успешно создано.');
     }

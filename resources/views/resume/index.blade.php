@@ -31,24 +31,29 @@
                 @forelse($resumes as $resume)
                     <tr>
                         <td class="user-name">
-                            <a href="#" class="name">{!! $resume->title !!}</a>
+                            <a href="{{ url('resume/' . $resume->id . "/edit") }}" class="name">{!! $resume->name !!}</a>
                         </td>
                         <td class="hidden-xs hidden-sm">
-                            <span class="email"><a href="{{ url('vacancy/' . $resume->vacancy_id . "/edit") }}">{!! $vacancy->vacancy_id !!}</a></span>
+                            {!! $resume->vacancy->title !!}
                         </td>
                         <td class="user-id">
-                            {!! $vacancy->birthday !!}
+                            @php
+                                $bd = \Carbon\Carbon::parse($resume->birthday);
+                                $now = \Carbon\Carbon::now();
+                                echo $now->diffInYears($bd);
+                            @endphp
                         </td>
                         <td>
-                            {{ $vacancy->experience }}
+                            {{ $resume->experience }}
                         </td>
                         <td class="">
                            @php
-                                switch($vacancy->status) {
+                                switch($resume->status) {
                                     case 1: $status = 'Молодой'; break;
                                     case 2: $status = 'Мало знает'; break;
                                     case 3: $status = 'Надо подумать'; break;
                                     case 4: $status = 'Отличный человек'; break;
+                                    default: $status = '';break;
                                 }
                            @endphp
                             {{ $status }}
