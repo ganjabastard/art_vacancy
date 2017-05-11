@@ -28,7 +28,7 @@ class ResumesController extends Controller
      */
     public function create()
     {
-        $vacancy = Vacancy::isActive()->with('vacancy')->get()->pluck('title', 'id');
+        $vacancy = Vacancy::isActive()->get()->pluck('title', 'id');
         return view('resume.create', compact('vacancy'));
     }
 
@@ -73,7 +73,9 @@ class ResumesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $resume = Resume::find($id);
+        $vacancy = Vacancy::isActive()->get()->pluck('title', 'id');
+        return view('resume.edit', compact('resume', 'vacancy'));
     }
 
     /**
@@ -83,9 +85,20 @@ class ResumesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ResumeRequest $request, $id)
     {
-        //
+        $resume              = Resume::find($id);
+        $resume->vacancy_id  = $request->vacancy_id;
+        $resume->name        = $request->name;
+        $resume->user_id     = auth()->user()->id;
+        $resume->description = $request->description;
+        $resume->experience  = $request->experience;
+        $resume->education   = $request->education;
+        $resume->university  = $request->university;
+        $resume->birthday    = $request->birthday;
+        $resume->status      = $request->status;
+        $resume->save();
+        return redirect('resume')->with('success', 'Резюме успешно создано.');
     }
 
     /**

@@ -100,7 +100,7 @@
                 <div class="form-group-separator __web-inspector-hide-shortcut__"></div>
                 <div class="col-xs-12">
                     <div class="form-group">
-                        <a href="{{ url('roles') }}" class="btn btn-white"><span class="fa-arrow-left"></span> Назад</a>
+                        <a href="{{ url('resume') }}" class="btn btn-white"><span class="fa-arrow-left"></span> Назад</a>
                         <button type="reset" class="btn btn-gray"><span class="fa-refresh"></span> Сбросить</button>
                         <button type="submit" class="btn btn-success"><span class="fa-save"></span> Сохранить</button>
                     </div>

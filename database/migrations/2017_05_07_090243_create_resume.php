@@ -15,7 +15,7 @@ class CreateResume extends Migration
     {
         Schema::create('resumes', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('active')->unsigned()->default(1);
+            $table->integer('status');
             $table->integer('vacancy_id')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->text('name',128);
