@@ -57,7 +57,7 @@
                 <div class="form-group">
                     {{ Form::label('education', 'Образование', ['class' => 'control-label col-sm-2']) }}
                     <div class="col-sm-10">
-                        <select name="status" id="" class="form-control">
+                        <select name="education" id="" class="form-control">
                             <option value="1">Среднее</option>
                             <option value="2">Высшие - специалист</option>
                             <option value="3">Высшие - бакалавр</option>
@@ -69,7 +69,13 @@
                 <div class="form-group">
                     {{ Form::label('experience', 'Опыт работы в годах', ['class' => 'control-label col-sm-2']) }}
                     <div class="col-sm-10">
-                        {{  Form::text('experience', null, ['class' => 'form-control', 'data-validate' => 'required', 'data-message-required' => 'Поле обязательно для заполнения', "placeholder" => 'Опыт работы в годах'])}}
+                        {{  Form::number('experience', 0, ['class' => 'form-control', 'data-validate' => 'required', 'data-message-required' => 'Поле обязательно для заполнения', "placeholder" => 'Опыт работы в годах'])}}
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{ Form::label('university', 'Университет', ['class' => 'control-label col-sm-2']) }}
+                    <div class="col-sm-10">
+                        {{  Form::text('university', null, ['class' => 'form-control', "placeholder" => 'Университет'])}}
                     </div>
                 </div>
                 <div class="form-group-separator __web-inspector-hide-shortcut__"></div>

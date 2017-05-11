@@ -25,7 +25,6 @@ class ResumeRequest extends FormRequest
     {
         return [
             'vacancy_id' => 'required',
-            'user_id' => 'required',
             'status' => 'required',
             'name' => 'required',
             'birthday' => 'required',

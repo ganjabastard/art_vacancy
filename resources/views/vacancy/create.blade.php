@@ -62,24 +62,24 @@
                 <div class="form-group">
                     {{ Form::label('experience', 'Опыт', ['class' => 'control-label col-sm-2']) }}
                     <div class="col-sm-10">
-                        {{  Form::text('experience', null, ['class' => 'form-control', 'data-validate' => 'required', 'data-message-required' => 'Поле обязательно для заполнения', "placeholder" => 'Опыт'])}}
+                        {{  Form::number('experience', 0, ['class' => 'form-control', 'data-validate' => 'required', 'data-message-required' => 'Поле обязательно для заполнения', "placeholder" => 'Опыт'])}}
                     </div>
                 </div>
                 <div class="form-group-separator __web-inspector-hide-shortcut__"></div>
                 <div class="form-group">
                     {{ Form::label('age_start', 'Возраст', ['class' => 'control-label col-sm-2']) }}
                     <div class="col-sm-5">
-                        {{  Form::text('age_start', null, ['class' => 'form-control', 'data-message-required' => 'Поле обязательно для заполнения', "placeholder" => 'Возраст от'])}}
+                        {{  Form::number('age_start', 0, ['class' => 'form-control', 'data-message-required' => 'Поле обязательно для заполнения', "placeholder" => 'Возраст от'])}}
                     </div>
                     <div class="col-sm-5">
-                        {{  Form::text('age_end', null, ['class' => 'form-control', 'data-message-required' => 'Поле обязательно для заполнения', "placeholder" => 'Возраст до'])}}
+                        {{  Form::number('age_end', 0, ['class' => 'form-control', 'data-message-required' => 'Поле обязательно для заполнения', "placeholder" => 'Возраст до'])}}
                     </div>
                 </div>
                 <div class="form-group-separator __web-inspector-hide-shortcut__"></div>
                 <div class="form-group">
                     {{ Form::label('active', 'Активен', ['class' => 'control-label col-sm-2']) }}
                     <div class="col-sm-10">
-                        {{  Form::checkbox('active', 1, 1, ['class' => 'iswitch iswitch-secondary', 'data-validate' => 'required', 'data-message-required' => 'Поле обязательно для заполнения', "placeholder" => 'Активен'])}}
+                        {{  Form::checkbox('active', 1, 1, ['class' => 'iswitch iswitch-secondary',  "placeholder" => 'Активен'])}}
                     </div>
                 </div>
                 <div class="form-group-separator __web-inspector-hide-shortcut__"></div>

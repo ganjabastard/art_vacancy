@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ResumeRequest;
 use App\Models\Resume;
 use App\Models\Vacancy;
 use Illuminate\Http\Request;
@@ -37,16 +38,17 @@ class ResumesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ResumeRequest $request)
     {
         $resume              = new Resume();
         $resume->vacancy_id  = $request->vacancy_id;
         $resume->name        = $request->name;
         $resume->user_id     = auth()->user()->id;
-        $resume->descripion  = $request->descripion;
+        $resume->description = $request->description;
         $resume->experience  = $request->experience;
         $resume->education   = $request->education;
         $resume->university  = $request->university;
+        $resume->birthday    = $request->birthday;
         $resume->save();
         return redirect('resume')->with('success', 'Резюме успешно создано.');
     }

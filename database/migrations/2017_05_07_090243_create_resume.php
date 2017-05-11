@@ -19,8 +19,8 @@ class CreateResume extends Migration
             $table->integer('vacancy_id')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->text('name',128);
-            $table->text('descripion');
-            $table->integer('birthday')->unsigned();
+            $table->text('description');
+            $table->dateTime('birthday');
             $table->integer('experience');
             $table->integer('education');
             $table->text('university');
