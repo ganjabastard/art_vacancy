@@ -40,6 +40,11 @@
             Route::resource('resume', 'ResumesController');
         });
 
+        // interview
+        Route::group(['middleware' => ['permission:interview']], function () {
+            Route::resource('interview', 'InterviewController');
+        });
+
         Route::group(['middleware' => ['role:admin']], function () {
 
         });
