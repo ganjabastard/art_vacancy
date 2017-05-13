@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ClientFieldTypesRequest extends FormRequest
+class InterviewRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,11 +23,16 @@ class ClientFieldTypesRequest extends FormRequest
      */
     public function rules()
     {
-        $name = $this->get('id') != '' ? 'required|max:255|unique:client_field_types,translate_id,'.$this->get('id').',id' : 'required|max:255|unique:client_field_types,translate_id';
+
         return [
-            'name' => $name,
-            'group_id' => 'required',
-            'type_id' => 'required',
+            'email' => $email,
+            'lastName' => 'required',
+            'firstName' => 'required',
+            'middleName' => 'required',
+            'phone' => 'required',
+            'code' => 'required',
+            'sex' => 'required',
+            'birth_date' => 'required'
         ];
     }
 }

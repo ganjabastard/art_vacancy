@@ -24,6 +24,7 @@ class CreateResume extends Migration
             $table->integer('experience');
             $table->integer('education');
             $table->text('university');
+            $table->text('email');
             $table->timestamps();
 
             $table->foreign('vacancy_id')->references('id')->on('vacancies')

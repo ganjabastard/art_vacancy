@@ -33,11 +33,19 @@
         <div class="panel-body">
             <div class="col-xs-6">
                 {{ Form::open(['url' => 'resume/' . $resume->id, 'method' => 'PUT', 'class' => 'validate form-horizontal', "novalidate" => 'novalidate']) }}
+                {{ Form::hidden('id', $resume->id) }}
                 <br>
                 <div class="form-group">
                     {{ Form::label('name', 'Имя', ['class' => 'control-label col-sm-2']) }}
                     <div class="col-sm-10">
                         {{  Form::text('name', $resume->name, ['class' => 'form-control', 'data-validate' => 'required', 'data-message-required' => 'Поле обязательно для заполнения', "placeholder" => 'Имя'])}}
+                    </div>
+                </div>
+                <div class="form-group-separator __web-inspector-hide-shortcut__"></div>
+                <div class="form-group">
+                    {{ Form::label('email', 'Email', ['class' => 'control-label col-sm-2']) }}
+                    <div class="col-sm-10">
+                        {{  Form::text('email', $resume->email, ['class' => 'form-control', 'data-validate' => 'required', 'data-message-required' => 'Поле обязательно для заполнения', "placeholder" => 'Email'])}}
                     </div>
                 </div>
                 <div class="form-group-separator __web-inspector-hide-shortcut__"></div>
@@ -198,7 +206,7 @@
     <div class="modal fade" id="modal-1">
         <div class="modal-dialog">
             <div class="modal-content">
-                {{ Form::open(['url' => 'interview/create', 'method' => 'POST', 'class' => 'validate form-horizontal', "novalidate" => 'novalidate']) }}
+                {{ Form::open(['url' => 'interview/', 'method' => 'POST', 'class' => 'validate form-horizontal', "novalidate" => 'novalidate']) }}
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     <h4 class="modal-title">Назначить собеседования</h4>
@@ -218,7 +226,7 @@
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-white" data-dismiss="modal">Закрыть</button>
-                    <button type="button" class="btn btn-info">Сохранить</button>
+                    <button type="submit" class="btn btn-info">Сохранить</button>
                 </div>
                 {{ Form::close() }}
             </div>

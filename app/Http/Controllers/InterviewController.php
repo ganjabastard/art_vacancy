@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Interview;
 use Illuminate\Http\Request;
 
 class InterviewController extends Controller
@@ -13,7 +14,7 @@ class InterviewController extends Controller
      */
     public function index()
     {
-        //
+        return 123;
     }
 
     /**
@@ -23,7 +24,7 @@ class InterviewController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -32,9 +33,9 @@ class InterviewController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(InterviewRequest $request)
     {
-        //
+        dd($request);
     }
 
     /**

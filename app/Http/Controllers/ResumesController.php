@@ -41,6 +41,7 @@ class ResumesController extends Controller
     public function store(ResumeRequest $request)
     {
         $resume              = new Resume();
+        $resume->email       = $request->email;
         $resume->vacancy_id  = $request->vacancy_id;
         $resume->name        = $request->name;
         $resume->user_id     = auth()->user()->id;
@@ -88,6 +89,7 @@ class ResumesController extends Controller
     public function update(ResumeRequest $request, $id)
     {
         $resume              = Resume::find($id);
+        $resume->email       = $request->email;
         $resume->vacancy_id  = $request->vacancy_id;
         $resume->name        = $request->name;
         $resume->user_id     = auth()->user()->id;

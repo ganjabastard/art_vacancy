@@ -23,7 +23,9 @@ class ResumeRequest extends FormRequest
      */
     public function rules()
     {
+        $email = $this->get('id') != '' ? 'required|max:255|unique:resumes,email,'.$this->get('id').',id' : 'required|max:255|unique:resumes,email';
         return [
+            'email' => $email,
             'vacancy_id' => 'required',
             'status' => 'required',
             'name' => 'required',

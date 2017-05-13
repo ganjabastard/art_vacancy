@@ -32,6 +32,7 @@
  */
     $factory->define(App\Models\Resume::class, function (Faker\Generator $faker) {
         return [
+            'email'          => $faker->email,
             'status'         => rand(1,4),
             'vacancy_id'     => \App\Models\Vacancy::inRandomOrder()->first()->id,
             'user_id'        => 1,
