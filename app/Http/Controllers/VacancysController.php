@@ -105,4 +105,13 @@ class VacancysController extends Controller
     {
         //
     }
+
+    /**
+     * Добавление комментариев
+     */
+    public function setComment(Request $request, $id)
+    {
+
+    }
+
 }
