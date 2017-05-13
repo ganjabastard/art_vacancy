@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ClientFieldGroupRequest extends FormRequest
+class VacancyRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,9 +23,10 @@ class ClientFieldGroupRequest extends FormRequest
      */
     public function rules()
     {
-        $name = $this->get('id') != '' ? 'required|max:255|unique:client_field_groups,translate_id,'.$this->get('id').',id' : 'required|max:255|unique:client_field_groups,translate_id';
         return [
-            'name' => $name,
+            'title' => 'required',
+            'experience' => 'required',
+            'status' => 'required',
         ];
     }
 }

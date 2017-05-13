@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ClientRequest extends FormRequest
+class ResumeRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,16 +23,15 @@ class ClientRequest extends FormRequest
      */
     public function rules()
     {
-        $email = $this->get('id') != '' ? 'required|max:255|unique:clients,email,'.$this->get('id').',id' : 'required|max:255|unique:clients,email';
+        $email = $this->get('id') != '' ? 'required|max:255|unique:resumes,email,'.$this->get('id').',id' : 'required|max:255|unique:resumes,email';
         return [
             'email' => $email,
-            'lastName' => 'required',
-            'firstName' => 'required',
-            'middleName' => 'required',
-            'phone' => 'required',
-            'code' => 'required',
-            'sex' => 'required',
-            'birth_date' => 'required'
+            'vacancy_id' => 'required',
+            'status' => 'required',
+            'name' => 'required',
+            'birthday' => 'required',
+            'experience' => 'required',
+            'education' => 'required',
         ];
     }
 }
