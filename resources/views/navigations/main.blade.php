@@ -12,6 +12,12 @@
         </a>
     </li>
     <li>
+        <a href="{{ url('interview') }}">
+            <i class="fa-bell"></i>
+            <span class="title">Собеседование</span>
+        </a>
+    </li>
+    <li>
         <a href="">
             <i class="fa-archive"></i>
             <span class="title">Архив</span>
