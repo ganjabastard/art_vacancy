@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\InterviewRequest;
 use App\Models\Interview;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class InterviewController extends Controller
@@ -12,9 +14,11 @@ class InterviewController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return 123;
+        $interviews = Interview::orderBy('created_at', "DESC");
+        $interviews = $interviews->paginate(10);
+        return view('interview.index', compact('interviews', 'request'));
     }
 
     /**
@@ -35,7 +39,15 @@ class InterviewController extends Controller
      */
     public function store(InterviewRequest $request)
     {
-        dd($request);
+        $interview = new Interview();
+        $interview->vacancy_id = $request->vacancy_id;
+        $interview->resume_id = $request->resume_id;
+        $interview->user_id = auth()->user()->id;
+        $interview->date = Carbon::parse($request->date . " " . $request->time)->format('Y-m-d H:i:s');
+        $interview->description = $request->description;
+        $interview->status = 1;
+        $interview->save();
+        return redirect('interview')->with('success', 'Собеседование успешно доавблено.');
     }
 
     /**

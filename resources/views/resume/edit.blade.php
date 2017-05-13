@@ -207,6 +207,8 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 {{ Form::open(['url' => 'interview/', 'method' => 'POST', 'class' => 'validate form-horizontal', "novalidate" => 'novalidate']) }}
+                {{ Form::hidden('vacancy_id', $resume->vacancy_id) }}
+                {{ Form::hidden('resume_id', $resume->id) }}
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     <h4 class="modal-title">Назначить собеседования</h4>
@@ -214,12 +216,12 @@
 
                 <div class="modal-body">
                     <div class="form-group">
-                        {{ Form::label('birthday', 'Дата собеседования', ['class' => 'control-label col-sm-4']) }}
+                        {{ Form::label('date', 'Дата собеседования', ['class' => 'control-label col-sm-4']) }}
                         <div class="col-sm-4">
-                            {{  Form::text('birthday', \Carbon\Carbon::parse('tomorrow')->format('Y-m-d'), ['class' => 'form-control datepicker', 'data-validate' => 'required', 'data-message-required' => 'Поле обязательно для заполнения', "placeholder" => 'Дата собеседования', 'data-format' => 'yyyy-mm-dd'])}}
+                            {{  Form::text('date', \Carbon\Carbon::parse('tomorrow')->format('Y-m-d'), ['class' => 'form-control datepicker', 'data-validate' => 'required', 'data-message-required' => 'Поле обязательно для заполнения', "placeholder" => 'Дата собеседования', 'data-format' => 'yyyy-mm-dd'])}}
                         </div>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control timepicker" data-template="dropdown" data-show-seconds="false" data-default-time="{{ Carbon\Carbon::now()->format('H:m') }}" data-show-meridian="false" data-minute-step="10" data-second-step="5">
+                            <input name="time" type="text" class="form-control timepicker" data-template="dropdown" data-show-seconds="false" data-default-time="{{ Carbon\Carbon::now()->format('H:m') }}" data-show-meridian="false" data-minute-step="10" data-second-step="5">
                         </div>
                     </div>
                 </div>

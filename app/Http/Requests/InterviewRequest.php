@@ -25,14 +25,10 @@ class InterviewRequest extends FormRequest
     {
 
         return [
-            'email' => $email,
-            'lastName' => 'required',
-            'firstName' => 'required',
-            'middleName' => 'required',
-            'phone' => 'required',
-            'code' => 'required',
-            'sex' => 'required',
-            'birth_date' => 'required'
+            'vacancy_id' => 'required',
+            'resume_id' => 'required',
+            'date' => 'required',
+            'time' => 'required',
         ];
     }
 }

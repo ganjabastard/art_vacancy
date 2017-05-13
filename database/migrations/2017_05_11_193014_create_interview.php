@@ -13,13 +13,13 @@ class CreateInterview extends Migration
      */
     public function up()
     {
-        Schema::create('interview', function (Blueprint $table) {
+        Schema::create('interviews', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('vacancy_id')->unsigned();
             $table->integer('resume_id')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->dateTime('date',128);
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->integer('status');
             $table->timestamps();
 
@@ -39,6 +39,6 @@ class CreateInterview extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('interview');
+        Schema::dropIfExists('interviews');
     }
 }

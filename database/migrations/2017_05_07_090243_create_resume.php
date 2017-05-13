@@ -41,6 +41,10 @@ class CreateResume extends Migration
      */
     public function down()
     {
+        Schema::table('resumes', function (Blueprint $table) {
+            $table->dropForeign(['user_id']);
+            $table->dropForeign(['vacancy_id']);
+        });
         Schema::dropIfExists('resumes');
     }
 }
