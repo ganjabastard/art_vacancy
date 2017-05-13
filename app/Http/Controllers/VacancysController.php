@@ -15,8 +15,7 @@ class VacancysController extends Controller
      */
     public function index(Request $request)
     {
-        $vacancys = new Vacancy();
-        $vacancys = $vacancys->paginate(10);
+        $vacancys = Vacancy::with(['user'])->paginate(10);
         return view('vacancy.index', compact('vacancys', 'request'));
     }
 
