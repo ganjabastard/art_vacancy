@@ -18,7 +18,7 @@
         </a>
     </li>
     <li>
-        <a href="">
+        <a href="{{ url('archive') }}">
             <i class="fa-archive"></i>
             <span class="title">Архив</span>
         </a>

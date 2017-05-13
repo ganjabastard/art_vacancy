@@ -45,6 +45,11 @@
             Route::resource('interview', 'InterviewController');
         });
 
+        // archive
+        Route::group(['middleware' => ['permission:archive']], function () {
+            Route::resource('archive', 'ArchiveController');
+        });
+
         Route::group(['middleware' => ['role:admin']], function () {
 
         });
