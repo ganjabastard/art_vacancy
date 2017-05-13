@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ResumeRequest;
+use App\Mdodels\CommentResume;
 use App\Models\Resume;
 use App\Models\Vacancy;
 use Illuminate\Http\Request;
@@ -16,8 +17,7 @@ class ResumesController extends Controller
      */
     public function index(Request $request)
     {
-        $resumes = new Resume();
-        $resumes = $resumes->paginate(10);
+        $resumes = Resume::with('vacancy')->paginate(10);
         return view('resume.index', compact('resumes', 'request'));
     }
 
@@ -76,7 +76,8 @@ class ResumesController extends Controller
     {
         $resume = Resume::find($id);
         $vacancy = Vacancy::isActive()->get()->pluck('title', 'id');
-        return view('resume.edit', compact('resume', 'vacancy'));
+        $comments = CommentResume::where('resume_id', $id)->with('user')->orderBy('created_at', 'DESC')->get();
+        return view('resume.edit', compact('resume', 'vacancy', 'comments'));
     }
 
     /**
@@ -112,5 +113,19 @@ class ResumesController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    /**
+     * Добавление комментариев
+     */
+    public function setComment(Request $request, $id)
+    {
+        $comennt = new CommentResume();
+        $comennt->user_id = auth()->user()->id;
+        $comennt->resume_id = $id;
+        $comennt->comment = $request->comment;
+        $comennt->save();
+        return redirect('resume/' . $id . '/edit')->with('success', 'Отзыв успешно доавблен');
     }
 }

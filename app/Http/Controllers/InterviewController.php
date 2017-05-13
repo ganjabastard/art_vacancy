@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\InterviewRequest;
+use App\Mdodels\CommentResume;
 use App\Models\Interview;
 use Carbon\Carbon;
 use Illuminate\Http\Request;

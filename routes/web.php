@@ -38,6 +38,7 @@
         // resume
         Route::group(['middleware' => ['permission:resume']], function () {
             Route::resource('resume', 'ResumesController');
+            Route::post('resume/comment/{id}', 'ResumesController@setComment');
         });
 
         // interview

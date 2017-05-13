@@ -118,9 +118,9 @@
                 {{ Form::close() }}
             </div>
             <div class="col-sm-6 profile-env">
-                <!-- User Post form and Timeline -->
-                <form method="post" action="" class="profile-post-form">
-                    <textarea class="form-control input-unstyled input-lg autogrow" placeholder="What's on your mind?"></textarea>
+                {{ Form::open(['url' => 'resume/comment/' . $resume->id, 'method' => 'POST', 'class' => ' profile-post-form validate form-horizontal', "novalidate" => 'novalidate']) }}
+                    {{ Form::hidden('id', $resume->id) }}
+                    {{ Form::textarea('comment', null,['class' => 'form-control input-unstyled input-lg autogrow', 'data-validate' => 'required', 'data-message-required' => 'Поле обязательно для заполнения',]) }}
                     <i class="el-edit block-icon"></i>
 
                     <ul class="list-unstyled list-inline form-action-buttons">
@@ -130,85 +130,37 @@
                 </form>
 
                 <section class="user-timeline-stories">
-                    <article class="timeline-story">
-                        <i class="fa-paper-plane-empty block-icon"></i>
-                        <header>
-                            <a href="#" class="user-img">
-                                <img src="{{ url('assets/images/user-4.png') }}" alt="user-img" class="img-responsive img-circle" />
-                            </a>
-                            <div class="user-details">
-                                <a href="#">Art Ramadani</a>
-                                <time>12 hours ago</time>
+                    @forelse($comments as $comment)
+                        <article class="timeline-story">
+                            <i class="fa-paper-plane-empty block-icon"></i>
+                            <header>
+                                <a href="{{ url('user/' . $comment->user_id . '/edit') }}" class="user-img">
+                                    <img src="{{ url('assets/images/user-4.png') }}" alt="user-img" class="img-responsive img-circle" />
+                                </a>
+                                <div class="user-details">
+                                    <a href="{{ url('user/' . $comment->user_id . '/edit') }}">{{ $comment->user->name }}</a>
+                                    <time>{{ $comment->updated_at }}</time>
+                                </div>
+                            </header>
+                            <div class="story-content">
+                                <p>{{ $comment->comment }}</p>
                             </div>
-                        </header>
-                        <div class="story-content">
-                            <!-- Story Content Wrapped inside Paragraph -->
-                            <p>Tolerably earnestly middleton extremely distrusts she boy now not. Add and offered prepare how cordial two promise. Greatly who affixed suppose but enquire compact prepare all put. Added forth chief trees but rooms think may.</p>
-                        </div>
-                    </article>
+                        </article>
+                    @empty
+                    @endforelse
 
-                    <article class="timeline-story">
-                        <i class="fa-paper-plane-empty block-icon"></i>
-                        <header>
-                            <a href="#" class="user-img">
-                                <img src="{{ url('assets/images/user-4.png') }}" alt="user-img" class="img-responsive img-circle" />
-                            </a>
-                            <div class="user-details">
-                                <a href="#">Art Ramadani</a>
-                                <time>12 hours ago</time>
-                            </div>
-                        </header>
-                        <div class="story-content">
-                            <!-- Story Content Wrapped inside Paragraph -->
-                            <p>Tolerably earnestly middleton extremely distrusts she boy now not. Add and offered prepare how cordial two promise. Greatly who affixed suppose but enquire compact prepare all put. Added forth chief trees but rooms think may.</p>
-                        </div>
-                    </article>
-                    <article class="timeline-story">
-                        <i class="fa-paper-plane-empty block-icon"></i>
-                        <header>
-                            <a href="#" class="user-img">
-                                <img src="{{ url('assets/images/user-4.png') }}" alt="user-img" class="img-responsive img-circle" />
-                            </a>
-                            <div class="user-details">
-                                <a href="#">Art Ramadani</a>
-                                <time>12 hours ago</time>
-                            </div>
-                        </header>
-                        <div class="story-content">
-                            <!-- Story Content Wrapped inside Paragraph -->
-                            <p>Tolerably earnestly middleton extremely distrusts she boy now not. Add and offered prepare how cordial two promise. Greatly who affixed suppose but enquire compact prepare all put. Added forth chief trees but rooms think may.</p>
-                        </div>
-                    </article>
-                    <article class="timeline-story">
-                        <i class="fa-paper-plane-empty block-icon"></i>
-                        <header>
-                            <a href="#" class="user-img">
-                                <img src="{{ url('assets/images/user-4.png') }}" alt="user-img" class="img-responsive img-circle" />
-                            </a>
-                            <div class="user-details">
-                                <a href="#">Art Ramadani</a>
-                                <time>12 hours ago</time>
-                            </div>
-                        </header>
-                        <div class="story-content">
-                            <!-- Story Content Wrapped inside Paragraph -->
-                            <p>Tolerably earnestly middleton extremely distrusts she boy now not. Add and offered prepare how cordial two promise. Greatly who affixed suppose but enquire compact prepare all put. Added forth chief trees but rooms think may.</p>
-                        </div>
-                    </article>
                 </section>
 
             </div>
         </div>
     </div>
 
-
     <!-- Modal 1 (Basic)-->
     <div class="modal fade" id="modal-1">
         <div class="modal-dialog">
             <div class="modal-content">
                 {{ Form::open(['url' => 'interview/', 'method' => 'POST', 'class' => 'validate form-horizontal', "novalidate" => 'novalidate']) }}
-                {{ Form::hidden('vacancy_id', $resume->vacancy_id) }}
-                {{ Form::hidden('resume_id', $resume->id) }}
+                {{ Form::hidden('vacancy_id', $resume) }}
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     <h4 class="modal-title">Назначить собеседования</h4>
@@ -216,12 +168,12 @@
 
                 <div class="modal-body">
                     <div class="form-group">
-                        {{ Form::label('date', 'Дата собеседования', ['class' => 'control-label col-sm-4']) }}
+                        {{ Form::label('birthday', 'Дата собеседования', ['class' => 'control-label col-sm-4']) }}
                         <div class="col-sm-4">
-                            {{  Form::text('date', \Carbon\Carbon::parse('tomorrow')->format('Y-m-d'), ['class' => 'form-control datepicker', 'data-validate' => 'required', 'data-message-required' => 'Поле обязательно для заполнения', "placeholder" => 'Дата собеседования', 'data-format' => 'yyyy-mm-dd'])}}
+                            {{  Form::text('birthday', \Carbon\Carbon::parse('tomorrow')->format('Y-m-d'), ['class' => 'form-control datepicker', 'data-validate' => 'required', 'data-message-required' => 'Поле обязательно для заполнения', "placeholder" => 'Дата собеседования', 'data-format' => 'yyyy-mm-dd'])}}
                         </div>
                         <div class="col-sm-4">
-                            <input name="time" type="text" class="form-control timepicker" data-template="dropdown" data-show-seconds="false" data-default-time="{{ Carbon\Carbon::now()->format('H:i') }}" data-show-meridian="false" data-minute-step="10" data-second-step="5">
+                            <input type="text" class="form-control timepicker" data-template="dropdown" data-show-seconds="false" data-default-time="{{ Carbon\Carbon::now()->format('H:m') }}" data-show-meridian="false" data-minute-step="10" data-second-step="5">
                         </div>
                     </div>
                 </div>
