@@ -11,6 +11,9 @@
     |
     */
 
+/**
+ * Генерация вакансий
+ */
     $factory->define(App\Models\Vacancy::class, function (Faker\Generator $faker) {
         return [
             'title'           => $faker->name,
@@ -21,6 +24,23 @@
             'age_start'      => rand (16,20),
             'age_end'        => rand (20,60),
             'experience'     => rand(0, 5),
+        ];
+    });
+
+/**
+ * Генерация резюму
+ */
+    $factory->define(App\Models\Resume::class, function (Faker\Generator $faker) {
+        return [
+            'status'         => rand(1,4),
+            'vacancy_id'     => \App\Models\Vacancy::inRandomOrder()->first()->id,
+            'user_id'        => 1,
+            'name'           => $faker->name,
+            'description'    => $faker->text(50),
+            'birthday'       => $faker->dateTimeBetween('-30 years', 'now'),
+            'experience'     => rand(0, 5),
+            'education'      => rand(1,5),
+            'university'     => $faker->text(50),
         ];
     });
 
