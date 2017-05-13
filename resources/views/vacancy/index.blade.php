@@ -53,6 +53,7 @@
                                     case 2: $status = 'Горячая'; break;
                                     case 3: $status = 'Постоянно'; break;
                                     case 0: $status = 'Окончена'; break;
+                                    default: $status = ''; break;
                                 }
                            @endphp
                             {{ $status }}
@@ -79,6 +80,6 @@
                 {{ $vacancys->links() }}
             </div>
         </div>
-
+        </div>
     </div>
 @endsection

@@ -87,10 +87,6 @@
                                         <i class="linecons-pencil"></i>
                                         Редактировать
                                     </a>
-                                    <a href="#" class="btn btn-sm btn-danger">
-                                        <i class="linecons-trash"></i>
-                                        Удалить
-                                    </a>
                                 </td>
                             </tr>
                         @empty

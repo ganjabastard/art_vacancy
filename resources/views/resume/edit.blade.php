@@ -221,7 +221,7 @@
                             {{  Form::text('date', \Carbon\Carbon::parse('tomorrow')->format('Y-m-d'), ['class' => 'form-control datepicker', 'data-validate' => 'required', 'data-message-required' => 'Поле обязательно для заполнения', "placeholder" => 'Дата собеседования', 'data-format' => 'yyyy-mm-dd'])}}
                         </div>
                         <div class="col-sm-4">
-                            <input name="time" type="text" class="form-control timepicker" data-template="dropdown" data-show-seconds="false" data-default-time="{{ Carbon\Carbon::now()->format('H:m') }}" data-show-meridian="false" data-minute-step="10" data-second-step="5">
+                            <input name="time" type="text" class="form-control timepicker" data-template="dropdown" data-show-seconds="false" data-default-time="{{ Carbon\Carbon::now()->format('H:i') }}" data-show-meridian="false" data-minute-step="10" data-second-step="5">
                         </div>
                     </div>
                 </div>

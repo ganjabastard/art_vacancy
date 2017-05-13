@@ -16,7 +16,7 @@ class InterviewController extends Controller
      */
     public function index(Request $request)
     {
-        $interviews = Interview::orderBy('created_at', "DESC");
+        $interviews = Interview::whereIn('status', [1, 2])->orderBy('created_at', "DESC");
         $interviews = $interviews->paginate(10);
         return view('interview.index', compact('interviews', 'request'));
     }
@@ -47,7 +47,7 @@ class InterviewController extends Controller
         $interview->description = $request->description;
         $interview->status = 1;
         $interview->save();
-        return redirect('interview')->with('success', 'Собеседование успешно доавблено.');
+        return redirect('interview')->with('success', 'Собеседование успешно добавлено.');
     }
 
     /**
@@ -69,7 +69,8 @@ class InterviewController extends Controller
      */
     public function edit($id)
     {
-        //
+        $interview = Interview::find($id);
+        return view('interview.edit', compact('interview'));
     }
 
     /**
@@ -79,9 +80,17 @@ class InterviewController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(InterviewRequest $request, $id)
     {
-        //
+        $interview = Interview::find($id);
+        $interview->vacancy_id = $request->vacancy_id;
+        $interview->resume_id = $request->resume_id;
+        $interview->user_id = auth()->user()->id;
+        $interview->date = Carbon::parse($request->date . " " . $request->time)->format('Y-m-d H:i:s');
+        $interview->description = $request->description;
+        $interview->status = $request->status;
+        $interview->save();
+        return redirect('interview')->with('success', 'Собеседование успешно обновлено.');
     }
 
     /**
