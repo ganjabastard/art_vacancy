@@ -7,7 +7,7 @@
             <p class="description">Список всех вакансий.</p>
         </div>
         <div class="breadcrumb-env">
-            <a href="http://vacancy.local/vacancy/create" class="btn btn-success"><span class="fa-plus"></span> Добавить вакасию</a>
+            <a href="{{ url('/vacancy/create') }}" class="btn btn-success"><span class="fa-plus"></span> Добавить вакасию</a>
         </div>
     </div>
 @endsection

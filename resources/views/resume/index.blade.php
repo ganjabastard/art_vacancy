@@ -7,7 +7,7 @@
             <p class="description">Список всех резюму.</p>
         </div>
         <div class="breadcrumb-env">
-            <a href="http://vacancy.local/resume/create" class="btn btn-success"><span class="fa-plus"></span> Добавить резюму</a>
+            <a href="{{ url('resume/create') }}" class="btn btn-success"><span class="fa-plus"></span> Добавить резюму</a>
         </div>
     </div>
 @endsection
