@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\VacancyRequest;
+use App\Models\Interview;
 use App\Models\Vacancy;
 use Illuminate\Http\Request;
 
@@ -70,7 +71,8 @@ class VacancysController extends Controller
     public function edit($id)
     {
         $vacancy = Vacancy::find($id);
-        return view('vacancy.edit', compact('vacancy'));
+        $interview = Interview::where('vacancy_id', $id)->whereNotIn('status', [6, 0])->get();
+        return view('vacancy.edit', compact('vacancy', 'interview'));
     }
 
     /**

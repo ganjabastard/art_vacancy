@@ -51,5 +51,8 @@
             Route::resource('archive', 'ArchiveController');
         });
 
+        Route::group(['middleware' => ['role:admin']], function () {
+            Route::resource('whiteips', 'WhiteIpController');
+        });
 
     });
