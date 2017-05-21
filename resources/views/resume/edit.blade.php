@@ -50,6 +50,13 @@
                 </div>
                 <div class="form-group-separator __web-inspector-hide-shortcut__"></div>
                 <div class="form-group">
+                    {{ Form::label('phone', 'Телефон', ['class' => 'control-label col-sm-2']) }}
+                    <div class="col-sm-10">
+                        {{  Form::text('phone', $resume->email, ['class' => 'form-control', 'data-validate' => 'required', 'data-message-required' => 'Поле обязательно для заполнения', "placeholder" => 'Телефон'])}}
+                    </div>
+                </div>
+                <div class="form-group-separator __web-inspector-hide-shortcut__"></div>
+                <div class="form-group">
                     {{ Form::label('description',  'Описание', ['class' => 'control-label col-sm-2']) }}
                     <div class="col-sm-10">
                         {{  Form::textarea('description', $resume->description, ['class' => 'form-control', "placeholder" => 'Описание роли'])}}
@@ -80,6 +87,28 @@
                         {{  Form::text('university', $resume->university, ['class' => 'form-control', "placeholder" => 'Университет'])}}
                     </div>
                 </div>
+                <div class="form-group-separator __web-inspector-hide-shortcut__"></div>
+                <div class="form-group">
+                    {{ Form::label('source', 'Источник', ['class' => 'control-label col-sm-2']) }}
+                    <div class="col-sm-10">
+                        {{  Form::text('source', $resume->source, ['class' => 'form-control', "placeholder" => 'Источник'])}}
+                    </div>
+                </div>
+                <div class="form-group-separator __web-inspector-hide-shortcut__"></div>
+                <div class="form-group">
+                    {{ Form::label('link', 'Сылка на резюме', ['class' => 'control-label col-sm-2']) }}
+                    <div class="col-sm-10">
+                        {{  Form::text('link', $resume->link, ['class' => 'form-control', "placeholder" => 'Сылка на резюме'])}}
+                    </div>
+                </div>
+                <div class="form-group-separator __web-inspector-hide-shortcut__"></div>
+                <div class="form-group">
+                    {{ Form::label('position', 'Должность', ['class' => 'control-label col-sm-2']) }}
+                    <div class="col-sm-10">
+                        {{  Form::text('position', $resume->position, ['class' => 'form-control', "placeholder" => 'Должность'])}}
+                    </div>
+                </div>
+
                 <div class="form-group-separator __web-inspector-hide-shortcut__"></div>
                 <div class="form-group">
                     {{ Form::label('status', 'Статус', ['class' => 'control-label col-sm-2']) }}

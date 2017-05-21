@@ -20,7 +20,6 @@
                 <thead>
                 <tr>
                     <th data-priority="1">Имя</th>
-                    <th data-priority="1">Вакансия</th>
                     <th data-priority="1">Возраста</th>
                     <th data-priority="1">Опыт</th>
                     <th data-priority="1">Статус</th>
@@ -32,9 +31,6 @@
                     <tr>
                         <td class="user-name">
                             <a href="{{ url('resume/' . $resume->id . "/edit") }}" class="name">{!! $resume->name !!}</a>
-                        </td>
-                        <td class="hidden-xs hidden-sm">
-                            {!! $resume->vacancy->title !!}
                         </td>
                         <td class="user-id">
                             @php

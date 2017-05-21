@@ -17,7 +17,7 @@ class ResumesController extends Controller
      */
     public function index(Request $request)
     {
-        $resumes = Resume::with('vacancy')->paginate(10);
+        $resumes = Resume::with('vacancy')->orderBy('updated_at', 'DESC')->paginate(10);
         return view('resume.index', compact('resumes', 'request'));
     }
 
@@ -42,7 +42,6 @@ class ResumesController extends Controller
     {
         $resume              = new Resume();
         $resume->email       = $request->email;
-        $resume->vacancy_id  = $request->vacancy_id;
         $resume->name        = $request->name;
         $resume->user_id     = auth()->user()->id;
         $resume->description = $request->description;
@@ -51,6 +50,10 @@ class ResumesController extends Controller
         $resume->university  = $request->university;
         $resume->birthday    = $request->birthday;
         $resume->status      = $request->status;
+        $resume->phone       = $request->phone;
+        $resume->link        = $request->link;
+        $resume->source      = $request->source;
+        $resume->position    = $request->position;
         $resume->save();
         return redirect('resume')->with('success', 'Резюме успешно создано.');
     }
@@ -91,7 +94,6 @@ class ResumesController extends Controller
     {
         $resume              = Resume::find($id);
         $resume->email       = $request->email;
-        $resume->vacancy_id  = $request->vacancy_id;
         $resume->name        = $request->name;
         $resume->user_id     = auth()->user()->id;
         $resume->description = $request->description;
@@ -100,6 +102,10 @@ class ResumesController extends Controller
         $resume->university  = $request->university;
         $resume->birthday    = $request->birthday;
         $resume->status      = $request->status;
+        $resume->phone       = $request->phone;
+        $resume->link        = $request->link;
+        $resume->source      = $request->source;
+        $resume->position    = $request->position;
         $resume->save();
         return redirect('resume')->with('success', 'Резюме успешно создано.');
     }
