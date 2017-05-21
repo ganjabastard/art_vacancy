@@ -32,7 +32,6 @@
         return [
             'email'          => $faker->email,
             'status'         => rand(1,4),
-            'vacancy_id'     => \App\Models\Vacancy::inRandomOrder()->first()->id,
             'user_id'        => 1,
             'name'           => $faker->name,
             'description'    => $faker->text(50),

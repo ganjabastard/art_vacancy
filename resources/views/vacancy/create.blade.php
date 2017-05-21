@@ -51,10 +51,11 @@
                     {{ Form::label('status', 'Статус', ['class' => 'control-label col-sm-2']) }}
                     <div class="col-sm-10">
                         <select name="status" id="" class="form-control">
-                            <option value="1">Новая</option>
-                            <option value="2">Горячая</option>
-                            <option value="3">Постоянно</option>
-                            <option value="0">Окончена</option>
+                            <option value="1">Открыта</option>
+                            <option value="2">Ожидает</option>
+                            <option value="3">в работе</option>
+                            <option value="4">Закрыта</option>
+                            <option value="0">Отменена</option>
                         </select>
                     </div>
                 </div>

@@ -31,7 +31,7 @@
         </div>
 
         <div class="panel-body">
-            <div class="col-xs-6">
+            <div class="col-xs-8">
                 {{ Form::open(['url' => 'resume/' . $resume->id, 'method' => 'PUT', 'class' => 'validate form-horizontal', "novalidate" => 'novalidate']) }}
                 {{ Form::hidden('id', $resume->id) }}
                 <br>
@@ -46,13 +46,6 @@
                     {{ Form::label('email', 'Email', ['class' => 'control-label col-sm-2']) }}
                     <div class="col-sm-10">
                         {{  Form::text('email', $resume->email, ['class' => 'form-control', 'data-validate' => 'required', 'data-message-required' => 'Поле обязательно для заполнения', "placeholder" => 'Email'])}}
-                    </div>
-                </div>
-                <div class="form-group-separator __web-inspector-hide-shortcut__"></div>
-                <div class="form-group">
-                    {{ Form::label('vacancy_id', 'Вакансия', ['class' => 'control-label col-sm-2']) }}
-                    <div class="col-sm-10">
-                        {{ Form::select('vacancy_id', $vacancy, $resume->vacancy_id, ['class' => 'form-control', 'data-validate' => 'required', 'data-message-required' => 'Поле обязательно для заполнения']) }}
                     </div>
                 </div>
                 <div class="form-group-separator __web-inspector-hide-shortcut__"></div>
@@ -117,10 +110,10 @@
                 </div>
                 {{ Form::close() }}
             </div>
-            <div class="col-sm-6 profile-env">
+            <div class="col-sm-4 profile-env">
                 {{ Form::open(['url' => 'resume/comment/' . $resume->id, 'method' => 'POST', 'class' => ' profile-post-form validate form-horizontal', "novalidate" => 'novalidate']) }}
                     {{ Form::hidden('id', $resume->id) }}
-                    {{ Form::textarea('comment', null,['class' => 'form-control input-unstyled input-lg autogrow', 'data-validate' => 'required', 'data-message-required' => 'Поле обязательно для заполнения',]) }}
+                    {{ Form::textarea('comment', null,['rows' => 3, 'class' => 'form-control input-unstyled input-lg autogrow', 'data-validate' => 'required', 'data-message-required' => 'Поле обязательно для заполнения',]) }}
                     <i class="el-edit block-icon"></i>
 
                     <ul class="list-unstyled list-inline form-action-buttons">
@@ -148,9 +141,7 @@
                         </article>
                     @empty
                     @endforelse
-
                 </section>
-
             </div>
         </div>
     </div>

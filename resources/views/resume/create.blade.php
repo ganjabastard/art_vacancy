@@ -48,13 +48,6 @@
                 </div>
                 <div class="form-group-separator __web-inspector-hide-shortcut__"></div>
                 <div class="form-group">
-                    {{ Form::label('vacancy_id', 'Вакансия', ['class' => 'control-label col-sm-2']) }}
-                    <div class="col-sm-10">
-                        {{ Form::select('vacancy_id', $vacancy, null, ['class' => 'form-control', 'data-validate' => 'required', 'data-message-required' => 'Поле обязательно для заполнения']) }}
-                    </div>
-                </div>
-                <div class="form-group-separator __web-inspector-hide-shortcut__"></div>
-                <div class="form-group">
                     {{ Form::label('description',  'Описание', ['class' => 'control-label col-sm-2']) }}
                     <div class="col-sm-10">
                         {{  Form::textarea('description', null, ['class' => 'form-control', "placeholder" => 'Описание роли'])}}
