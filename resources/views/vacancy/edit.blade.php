@@ -93,217 +93,38 @@
             </div>
         </div>
         <div class="panel-body">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <a class="panel-title pull-left" data-toggle="panel">Найденные</a>
-                    <div class="panel-options pull-right">
-                        <a href="#" data-toggle="panel">
-                            <span class="collapse-icon">–</span>
-                            <span class="expand-icon">+</span>
-                        </a>
+            @foreach($statuses as $status => $status_name)
+                @if(isset($interviews[$status]) && count($interviews[$status]) > 0)
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                        <a class="panel-title pull-left" data-toggle="panel">{{ $status_name }}</a>
+                        <div class="panel-options pull-right">
+                            <a href="#" data-toggle="panel">
+                                <span class="collapse-icon">–</span>
+                                <span class="expand-icon">+</span>
+                            </a>
+                        </div>
                     </div>
-                </div>
-                <div class="panel-body">
-                    <table class="table table-condensed">
-                        <thead>
-                        <th>Дата</th>
-                        <th>Резюме</th>
-                        </thead>
-                        <tbody>
-                            @forelse($interview as $i)
-                                @if($i->status == 1)
-                                <tr>
-                                    <td><a href="{{ url('interview/' . $i->id . '/edit') }}">{{ $i->date }}</a></td>
-                                    <td><a href="{{ url('resume/' . $i->resume_id . '/edit') }}">{{ $i->resume->name }}</a></td>
-                                </tr>
-                                @endif
-                                @empty
-                            @endforelse
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <a class="panel-title pull-left" data-toggle="panel">Тел. интервью</a>
-                    <div class="panel-options pull-right">
-                        <a href="#" data-toggle="panel">
-                            <span class="collapse-icon">–</span>
-                            <span class="expand-icon">+</span>
-                        </a>
+                    <div class="panel-body">
+                        <table class="table table-condensed">
+                            <thead>
+                            <th>Дата</th>
+                            <th>Резюме</th>
+                            </thead>
+                            <tbody>
+                        @foreach($interviews[$status] as $i)
+                            <tr>
+                                <td><a href="{{ url('interview/' . $i->id . '/edit') }}">{{ $i->date }}</a></td>
+                                <td><a href="{{ url('resume/' . $i->resume_id . '/edit') }}">{{ $i->resume->name }}</a></td>
+                            </tr>
+                        @endforeach
+                            </tbody>
+                        </table>
+                        </div>
                     </div>
-                </div>
-                <div class="panel-body">
-                    <table class="table table-condensed">
-                        <thead>
-                        <th>Дата</th>
-                        <th>Резюме</th>
-                        </thead>
-                        <tbody>
-                        @forelse($interview as $i)
-                            @if($i->status == 2)
-                                <tr>
-                                    <td><a href="{{ url('interview/' . $i->id . '/edit') }}">{{ $i->date }}</a></td>
-                                    <td><a href="{{ url('resume/' . $i->resume_id . '/edit') }}">{{ $i->resume->name }}</a></td>
-                                </tr>
-                            @endif
-                        @empty
-                        @endforelse
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <a class="panel-title pull-left" data-toggle="panel">Тестовое задание</a>
-                    <div class="panel-options pull-right">
-                        <a href="#" data-toggle="panel">
-                            <span class="collapse-icon">–</span>
-                            <span class="expand-icon">+</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="panel-body">
-                    <table class="table table-condensed">
-                        <thead>
-                        <th>Дата</th>
-                        <th>Резюме</th>
-                        </thead>
-                        <tbody>
-                        @forelse($interview as $i)
-                            @if($i->status == 3)
-                                <tr>
-                                    <td><a href="{{ url('interview/' . $i->id . '/edit') }}">{{ $i->date }}</a></td>
-                                    <td><a href="{{ url('resume/' . $i->resume_id . '/edit') }}">{{ $i->resume->name }}</a></td>
-                                </tr>
-                            @endif
-                        @empty
-                        @endforelse
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <a class="panel-title pull-left" data-toggle="panel">Собеседование</a>
-                    <div class="panel-options pull-right">
-                        <a href="#" data-toggle="panel">
-                            <span class="collapse-icon">–</span>
-                            <span class="expand-icon">+</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="panel-body">
-                    <table class="table table-condensed">
-                        <thead>
-                        <th>Дата</th>
-                        <th>Резюме</th>
-                        </thead>
-                        <tbody>
-                        @forelse($interview as $i)
-                            @if($i->status == 4)
-                                <tr>
-                                    <td><a href="{{ url('interview/' . $i->id . '/edit') }}">{{ $i->date }}</a></td>
-                                    <td><a href="{{ url('resume/' . $i->resume_id . '/edit') }}">{{ $i->resume->name }}</a></td>
-                                </tr>
-                            @endif
-                        @empty
-                        @endforelse
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <a class="panel-title pull-left" data-toggle="panel">Собеседованние с руководителем</a>
-                    <div class="panel-options pull-right">
-                        <a href="#" data-toggle="panel">
-                            <span class="collapse-icon">–</span>
-                            <span class="expand-icon">+</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="panel-body">
-                    <table class="table table-condensed">
-                        <thead>
-                        <th>Дата</th>
-                        <th>Резюме</th>
-                        </thead>
-                        <tbody>
-                        @forelse($interview as $i)
-                            @if($i->status == 5)
-                                <tr>
-                                    <td><a href="{{ url('interview/' . $i->id . '/edit') }}">{{ $i->date }}</a></td>
-                                    <td><a href="{{ url('resume/' . $i->resume_id . '/edit') }}">{{ $i->resume->name }}</a></td>
-                                </tr>
-                            @endif
-                        @empty
-                        @endforelse
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <a class="panel-title pull-left" data-toggle="panel">Наш сотрудник</a>
-                    <div class="panel-options pull-right">
-                        <a href="#" data-toggle="panel">
-                            <span class="collapse-icon">–</span>
-                            <span class="expand-icon">+</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="panel-body">
-                    <table class="table table-condensed">
-                        <thead>
-                        <th>Дата</th>
-                        <th>Резюме</th>
-                        </thead>
-                        <tbody>
-                        @forelse($interview as $i)
-                            @if($i->status == 6)
-                                <tr>
-                                    <td><a href="{{ url('interview/' . $i->id . '/edit') }}">{{ $i->date }}</a></td>
-                                    <td><a href="{{ url('resume/' . $i->resume_id . '/edit') }}">{{ $i->resume->name }}</a></td>
-                                </tr>
-                            @endif
-                        @empty
-                        @endforelse
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <a class="panel-title pull-left" data-toggle="panel">Отказ</a>
-                    <div class="panel-options pull-right">
-                        <a href="#" data-toggle="panel">
-                            <span class="collapse-icon">–</span>
-                            <span class="expand-icon">+</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="panel-body">
-                    <table class="table table-condensed">
-                        <thead>
-                        <th>Дата</th>
-                        <th>Резюме</th>
-                        </thead>
-                        <tbody>
-                        @forelse($interview as $i)
-                            @if($i->status == 0)
-                                <tr>
-                                    <td><a href="{{ url('interview/' . $i->id . '/edit') }}">{{ $i->date }}</a></td>
-                                    <td><a href="{{ url('resume/' . $i->resume_id . '/edit') }}">{{ $i->resume->name }}</a></td>
-                                </tr>
-                            @endif
-                        @empty
-                        @endforelse
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
+                @endif
+            @endforeach
+       </div>
     </div>
 @endsection
 

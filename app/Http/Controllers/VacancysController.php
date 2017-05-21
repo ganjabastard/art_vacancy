@@ -72,7 +72,19 @@ class VacancysController extends Controller
     {
         $vacancy = Vacancy::find($id);
         $interview = Interview::where('vacancy_id', $id)->whereNotIn('status', [6, 0])->get();
-        return view('vacancy.edit', compact('vacancy', 'interview'));
+        if($interview->count() > 0)
+            foreach($interview as $i)
+                $interviews[$i->status][] = $i;
+        $statuses = [
+            1 => 'Найденные',
+            2 => 'Тел. интервью',
+            3 => 'Тестовое задание',
+            4 => 'Собеседование',
+            5 => 'Собеседование с реководителем',
+            6 => 'Нащ сотрудник',
+            0 => 'Отказ'
+        ];
+        return view('vacancy.edit', compact('vacancy', 'interviews', 'statuses'));
     }
 
     /**
