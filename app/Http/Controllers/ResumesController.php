@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ResumeRequest;
 use App\Mdodels\CommentResume;
+use App\Models\Interview;
 use App\Models\Resume;
 use App\Models\Vacancy;
 use Illuminate\Http\Request;
@@ -80,7 +81,8 @@ class ResumesController extends Controller
         $resume = Resume::find($id);
         $vacancy = Vacancy::isActive()->get()->pluck('title', 'id');
         $comments = CommentResume::where('resume_id', $id)->with('user')->orderBy('created_at', 'DESC')->get();
-        return view('resume.edit', compact('resume', 'vacancy', 'comments'));
+        $interviews = Interview::where('resume_id', $id)->get();
+        return view('resume.edit', compact('resume', 'vacancy', 'comments', 'interviews'));
     }
 
     /**
