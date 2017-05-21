@@ -46,13 +46,13 @@
                             <td class="">
                                 @php
                                     switch($interview->status) {
-                                        case 1: $status = 'Новая'; break;
-                                        case 2: $status = 'Перенесли'; break;
-                                        case 3: $status = 'Отказался'; break;
-                                        case 4: $status = 'Не пришол'; break;
-                                        case 5: $status = 'Возможно подходит'; break;
-                                        case 6: $status = 'Успешно'; break;
-                                        case 0: $status = 'Провалено'; break;
+                                        case 1: $status = 'Найденные'; break;
+                                        case 2: $status = 'Тел. интервью'; break;
+                                        case 3: $status = 'Тестовое задание'; break;
+                                        case 4: $status = 'Собеседование'; break;
+                                        case 5: $status = 'Собеседование в руководителем'; break;
+                                        case 6: $status = 'Наш сотрудник'; break;
+                                        case 0: $status = 'Отказ'; break;
                                         default: $status = '';break;
                                     }
                                 @endphp
