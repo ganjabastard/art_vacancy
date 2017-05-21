@@ -24,6 +24,10 @@ class CreateResume extends Migration
             $table->integer('education');
             $table->text('university');
             $table->text('email');
+            $table->text('phone', 64);
+            $table->text('link', 128);
+            $table->text('position', 128);
+            $table->text('source', 128);
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')

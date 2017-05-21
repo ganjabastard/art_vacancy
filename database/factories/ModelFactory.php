@@ -39,6 +39,10 @@
             'experience'     => rand(0, 5),
             'education'      => rand(1,5),
             'university'     => $faker->text(50),
+            'phone'          => rand(10000000, 99999999),
+            'link'           => $faker->text(50),
+            'position'       => $faker->text(50),
+            'source'         => $faker->text(50)
         ];
     });
 

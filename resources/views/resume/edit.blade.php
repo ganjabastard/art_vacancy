@@ -183,6 +183,9 @@
 
 @section('styles')
     <link rel="stylesheet" href="{{ url('assets/css/fonts/elusive/css/elusive.css') }}">
+    <style>
+        .profile-env .profile-post-form:after{display: none;}
+    </style>
 @endsection
 
 @section('scripts')
