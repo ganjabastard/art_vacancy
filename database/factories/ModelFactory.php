@@ -21,8 +21,6 @@
             'user_id'        => 1,
             'description'    => $faker->text(50),
             'status'         => rand(1,4),
-            'age_start'      => rand (16,20),
-            'age_end'        => rand (20,60),
             'experience'     => rand(0, 5),
         ];
     });

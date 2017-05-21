@@ -51,8 +51,5 @@
             Route::resource('archive', 'ArchiveController');
         });
 
-        Route::group(['middleware' => ['role:admin']], function () {
-
-        });
 
     });
