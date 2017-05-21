@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 
 @section('pagetitle')
@@ -23,7 +24,7 @@
 @endsection
 
 @section('content')
-    <div class="panel panel-default">
+    <div class="panel panel-default col-sm-6">
         <div class="panel-heading">
             <div class="panel-title">
                 Редактирование вакансии
@@ -51,10 +52,11 @@
                 {{ Form::label('status', 'Статус', ['class' => 'control-label col-sm-2']) }}
                 <div class="col-sm-10">
                     <select name="status" id="" class="form-control">
-                        <option value="1" @if($vacancy->status == 1) selected @endif>Новая</option>
-                        <option value="2" @if($vacancy->status == 2) selected @endif>Горячая</option>
-                        <option value="3" @if($vacancy->status == 3) selected @endif>Постоянно</option>
-                        <option value="0" @if($vacancy->status == 0) selected @endif>Окончена</option>
+                        <option value="1" @if($vacancy->status == 1) selected @endif>Открыта</option>
+                        <option value="2" @if($vacancy->status == 2) selected @endif>Ожидает</option>
+                        <option value="3" @if($vacancy->status == 3) selected @endif>В работе</option>
+                        <option value="3" @if($vacancy->status == 3) selected @endif>Закрыта</option>
+                        <option value="0" @if($vacancy->status == 0) selected @endif>Отменена</option>
                     </select>
                 </div>
             </div>
@@ -63,16 +65,6 @@
                 {{ Form::label('experience', 'Опыт', ['class' => 'control-label col-sm-2']) }}
                 <div class="col-sm-10">
                     {{  Form::number('experience', $vacancy->experience, ['class' => 'form-control', 'data-validate' => 'required', 'data-message-required' => 'Поле обязательно для заполнения', "placeholder" => 'Опыт'])}}
-                </div>
-            </div>
-            <div class="form-group-separator __web-inspector-hide-shortcut__"></div>
-            <div class="form-group">
-                {{ Form::label('age_start', 'Возраст', ['class' => 'control-label col-sm-2']) }}
-                <div class="col-sm-5">
-                    {{  Form::number('age_start', $vacancy->age_start, ['class' => 'form-control', 'data-message-required' => 'Поле обязательно для заполнения', "placeholder" => 'Возраст от'])}}
-                </div>
-                <div class="col-sm-5">
-                    {{  Form::number('age_end', $vacancy->age_end, ['class' => 'form-control', 'data-message-required' => 'Поле обязательно для заполнения', "placeholder" => 'Возраст до'])}}
                 </div>
             </div>
             <div class="form-group-separator __web-inspector-hide-shortcut__"></div>
@@ -92,6 +84,47 @@
             </div>
             {{ Form::close() }}
         </div>
+    </div>
+
+    <div class="panel panel-default col-sm-6">
+        <div class="panel-heading">
+            <div class="panel-title">
+                Собеседования
+            </div>
+        </div>
+        <div class="panel-body">
+            @foreach($statuses as $status => $status_name)
+                @if(isset($interviews[$status]) && count($interviews[$status]) > 0)
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                        <a class="panel-title pull-left" data-toggle="panel">{{ $status_name }}</a>
+                        <div class="panel-options pull-right">
+                            <a href="#" data-toggle="panel">
+                                <span class="collapse-icon">–</span>
+                                <span class="expand-icon">+</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table table-condensed">
+                            <thead>
+                            <th>Дата</th>
+                            <th>Резюме</th>
+                            </thead>
+                            <tbody>
+                        @foreach($interviews[$status] as $i)
+                            <tr>
+                                <td><a href="{{ url('interview/' . $i->id . '/edit') }}">{{ $i->date }}</a></td>
+                                <td><a href="{{ url('resume/' . $i->resume_id . '/edit') }}">{{ $i->resume->name }}</a></td>
+                            </tr>
+                        @endforeach
+                            </tbody>
+                        </table>
+                        </div>
+                    </div>
+                @endif
+            @endforeach
+       </div>
     </div>
 @endsection
 

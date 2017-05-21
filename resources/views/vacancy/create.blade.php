@@ -51,10 +51,11 @@
                     {{ Form::label('status', 'Статус', ['class' => 'control-label col-sm-2']) }}
                     <div class="col-sm-10">
                         <select name="status" id="" class="form-control">
-                            <option value="1">Новая</option>
-                            <option value="2">Горячая</option>
-                            <option value="3">Постоянно</option>
-                            <option value="0">Окончена</option>
+                            <option value="1">Открыта</option>
+                            <option value="2">Ожидает</option>
+                            <option value="3">в работе</option>
+                            <option value="4">Закрыта</option>
+                            <option value="0">Отменена</option>
                         </select>
                     </div>
                 </div>
@@ -63,16 +64,6 @@
                     {{ Form::label('experience', 'Опыт', ['class' => 'control-label col-sm-2']) }}
                     <div class="col-sm-10">
                         {{  Form::number('experience', 0, ['class' => 'form-control', 'data-validate' => 'required', 'data-message-required' => 'Поле обязательно для заполнения', "placeholder" => 'Опыт'])}}
-                    </div>
-                </div>
-                <div class="form-group-separator __web-inspector-hide-shortcut__"></div>
-                <div class="form-group">
-                    {{ Form::label('age_start', 'Возраст', ['class' => 'control-label col-sm-2']) }}
-                    <div class="col-sm-5">
-                        {{  Form::number('age_start', 0, ['class' => 'form-control', 'data-message-required' => 'Поле обязательно для заполнения', "placeholder" => 'Возраст от'])}}
-                    </div>
-                    <div class="col-sm-5">
-                        {{  Form::number('age_end', 0, ['class' => 'form-control', 'data-message-required' => 'Поле обязательно для заполнения', "placeholder" => 'Возраст до'])}}
                     </div>
                 </div>
                 <div class="form-group-separator __web-inspector-hide-shortcut__"></div>

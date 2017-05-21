@@ -61,13 +61,13 @@
                     {{ Form::label('status', 'Статус', ['class' => 'control-label col-sm-2']) }}
                     <div class="col-sm-10">
                         <select name="status" id="" class="form-control">
-                            <option value="1" @if($interview->status == 1) selected @endif>Новая</option>
-                            <option value="2" @if($interview->status == 2) selected @endif>Перенесли</option>
-                            <option value="3" @if($interview->status == 3) selected @endif>Отказался</option>
-                            <option value="4" @if($interview->status == 4) selected @endif>Не пришол</option>
-                            <option value="5" @if($interview->status == 5) selected @endif>Возможно подходит</option>
-                            <option value="6" @if($interview->status == 6) selected @endif>Успешно</option>
-                            <option value="0" @if($interview->status == 0) selected @endif>Провалено</option>
+                            <option value="1" @if($interview->status == 1) selected @endif>Найденные</option>
+                            <option value="2" @if($interview->status == 2) selected @endif>Тел. интервью</option>
+                            <option value="3" @if($interview->status == 3) selected @endif>Тестовое задание</option>
+                            <option value="4" @if($interview->status == 4) selected @endif>Собеседование</option>
+                            <option value="5" @if($interview->status == 5) selected @endif>Собеседование в руководителем</option>
+                            <option value="6" @if($interview->status == 6) selected @endif>Наш сотрудник</option>
+                            <option value="0" @if($interview->status == 0) selected @endif>Отказ</option>
                         </select>
                     </div>
                 </div>

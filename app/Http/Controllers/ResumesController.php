@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ResumeRequest;
 use App\Mdodels\CommentResume;
+use App\Models\Interview;
 use App\Models\Resume;
 use App\Models\Vacancy;
 use Illuminate\Http\Request;
@@ -17,7 +18,7 @@ class ResumesController extends Controller
      */
     public function index(Request $request)
     {
-        $resumes = Resume::with('vacancy')->paginate(10);
+        $resumes = Resume::with('vacancy')->orderBy('updated_at', 'DESC')->paginate(10);
         return view('resume.index', compact('resumes', 'request'));
     }
 
@@ -42,7 +43,6 @@ class ResumesController extends Controller
     {
         $resume              = new Resume();
         $resume->email       = $request->email;
-        $resume->vacancy_id  = $request->vacancy_id;
         $resume->name        = $request->name;
         $resume->user_id     = auth()->user()->id;
         $resume->description = $request->description;
@@ -51,6 +51,10 @@ class ResumesController extends Controller
         $resume->university  = $request->university;
         $resume->birthday    = $request->birthday;
         $resume->status      = $request->status;
+        $resume->phone       = $request->phone;
+        $resume->link        = $request->link;
+        $resume->source      = $request->source;
+        $resume->position    = $request->position;
         $resume->save();
         return redirect('resume')->with('success', 'Резюме успешно создано.');
     }
@@ -77,7 +81,8 @@ class ResumesController extends Controller
         $resume = Resume::find($id);
         $vacancy = Vacancy::isActive()->get()->pluck('title', 'id');
         $comments = CommentResume::where('resume_id', $id)->with('user')->orderBy('created_at', 'DESC')->get();
-        return view('resume.edit', compact('resume', 'vacancy', 'comments'));
+        $interviews = Interview::where('resume_id', $id)->get();
+        return view('resume.edit', compact('resume', 'vacancy', 'comments', 'interviews'));
     }
 
     /**
@@ -91,7 +96,6 @@ class ResumesController extends Controller
     {
         $resume              = Resume::find($id);
         $resume->email       = $request->email;
-        $resume->vacancy_id  = $request->vacancy_id;
         $resume->name        = $request->name;
         $resume->user_id     = auth()->user()->id;
         $resume->description = $request->description;
@@ -100,6 +104,10 @@ class ResumesController extends Controller
         $resume->university  = $request->university;
         $resume->birthday    = $request->birthday;
         $resume->status      = $request->status;
+        $resume->phone       = $request->phone;
+        $resume->link        = $request->link;
+        $resume->source      = $request->source;
+        $resume->position    = $request->position;
         $resume->save();
         return redirect('resume')->with('success', 'Резюме успешно создано.');
     }

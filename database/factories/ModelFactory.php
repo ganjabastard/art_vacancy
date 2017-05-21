@@ -21,8 +21,6 @@
             'user_id'        => 1,
             'description'    => $faker->text(50),
             'status'         => rand(1,4),
-            'age_start'      => rand (16,20),
-            'age_end'        => rand (20,60),
             'experience'     => rand(0, 5),
         ];
     });
@@ -34,7 +32,6 @@
         return [
             'email'          => $faker->email,
             'status'         => rand(1,4),
-            'vacancy_id'     => \App\Models\Vacancy::inRandomOrder()->first()->id,
             'user_id'        => 1,
             'name'           => $faker->name,
             'description'    => $faker->text(50),
@@ -42,6 +39,10 @@
             'experience'     => rand(0, 5),
             'education'      => rand(1,5),
             'university'     => $faker->text(50),
+            'phone'          => rand(10000000, 99999999),
+            'link'           => $faker->text(50),
+            'position'       => $faker->text(50),
+            'source'         => $faker->text(50)
         ];
     });
 

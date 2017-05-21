@@ -48,9 +48,9 @@
                 </div>
                 <div class="form-group-separator __web-inspector-hide-shortcut__"></div>
                 <div class="form-group">
-                    {{ Form::label('vacancy_id', 'Вакансия', ['class' => 'control-label col-sm-2']) }}
+                    {{ Form::label('phone', 'Телефон', ['class' => 'control-label col-sm-2']) }}
                     <div class="col-sm-10">
-                        {{ Form::select('vacancy_id', $vacancy, null, ['class' => 'form-control', 'data-validate' => 'required', 'data-message-required' => 'Поле обязательно для заполнения']) }}
+                        {{  Form::text('phone', null, ['class' => 'form-control', 'data-validate' => 'required', 'data-message-required' => 'Поле обязательно для заполнения', "placeholder" => 'Телефон'])}}
                     </div>
                 </div>
                 <div class="form-group-separator __web-inspector-hide-shortcut__"></div>
@@ -73,16 +73,39 @@
                         </select>
                     </div>
                 </div>
+                <div class="form-group-separator __web-inspector-hide-shortcut__"></div>
                 <div class="form-group">
                     {{ Form::label('experience', 'Опыт работы в годах', ['class' => 'control-label col-sm-2']) }}
                     <div class="col-sm-10">
                         {{  Form::number('experience', 0, ['class' => 'form-control', 'data-validate' => 'required', 'data-message-required' => 'Поле обязательно для заполнения', "placeholder" => 'Опыт работы в годах'])}}
                     </div>
                 </div>
+                <div class="form-group-separator __web-inspector-hide-shortcut__"></div>
                 <div class="form-group">
                     {{ Form::label('university', 'Университет', ['class' => 'control-label col-sm-2']) }}
                     <div class="col-sm-10">
                         {{  Form::text('university', null, ['class' => 'form-control', "placeholder" => 'Университет'])}}
+                    </div>
+                </div>
+                <div class="form-group-separator __web-inspector-hide-shortcut__"></div>
+                <div class="form-group">
+                    {{ Form::label('source', 'Источник', ['class' => 'control-label col-sm-2']) }}
+                    <div class="col-sm-10">
+                        {{  Form::text('source', null, ['class' => 'form-control', "placeholder" => 'Источник'])}}
+                    </div>
+                </div>
+                <div class="form-group-separator __web-inspector-hide-shortcut__"></div>
+                <div class="form-group">
+                    {{ Form::label('link', 'Сылка на резюме', ['class' => 'control-label col-sm-2']) }}
+                    <div class="col-sm-10">
+                        {{  Form::text('link', null, ['class' => 'form-control', "placeholder" => 'Сылка на резюме'])}}
+                    </div>
+                </div>
+                <div class="form-group-separator __web-inspector-hide-shortcut__"></div>
+                <div class="form-group">
+                    {{ Form::label('position', 'Должность', ['class' => 'control-label col-sm-2']) }}
+                    <div class="col-sm-10">
+                        {{  Form::text('position', null, ['class' => 'form-control', "placeholder" => 'Должность'])}}
                     </div>
                 </div>
                 <div class="form-group-separator __web-inspector-hide-shortcut__"></div>

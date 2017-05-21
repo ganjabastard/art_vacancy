@@ -16,7 +16,7 @@ class ArchiveController extends Controller
      */
     public function index(Request $request)
     {
-        $interviews = Interview::whereNotIn('status', [1, 2])->orderBy('created_at', "DESC");
+        $interviews = Interview::whereIn('status', [6, 0])->orderBy('created_at', "DESC");
         $interviews = $interviews->paginate(10);
         return view('interview.index', compact('interviews', 'request'));
     }

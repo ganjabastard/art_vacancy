@@ -17,7 +17,7 @@ class InterviewController extends Controller
      */
     public function index(Request $request)
     {
-        $interviews = Interview::with(['user', 'resume', 'vacancy'])->whereIn('status', [1, 2])->orderBy('created_at', "DESC");
+        $interviews = Interview::with(['user', 'resume', 'vacancy'])->whereNotIn('status', [6, 0])->orderBy('created_at', "DESC");
         $interviews = $interviews->paginate(10);
         return view('interview.index', compact('interviews', 'request'));
     }
@@ -103,5 +103,12 @@ class InterviewController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    public function calendar()
+    {
+        $interview = Interview::with(['vacancy'])->whereNotIn('status', [6,0])->get();
+        return view('calendar.index', compact('interview'));
     }
 }

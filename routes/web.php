@@ -44,6 +44,7 @@
         // interview
         Route::group(['middleware' => ['permission:interview']], function () {
             Route::resource('interview', 'InterviewController');
+            Route::get('calendar', 'InterviewController@calendar');
         });
 
         // archive
@@ -52,6 +53,7 @@
         });
 
         Route::group(['middleware' => ['role:admin']], function () {
+            Route::resource('whiteips', 'WhiteIpController');
 
         });
 

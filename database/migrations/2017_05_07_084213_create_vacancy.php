@@ -20,8 +20,6 @@ class CreateVacancy extends Migration
             $table->text('title',128);
             $table->text('description');
             $table->integer('status')->unsigned();
-            $table->integer('age_start')->unsigned()->nullable();
-            $table->integer('age_end')->unsigned()->nullable();
             $table->integer('experience')->unsigned()->nullable();
             $table->timestamps();
 

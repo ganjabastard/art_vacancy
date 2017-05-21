@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\VacancyRequest;
+use App\Models\Interview;
 use App\Models\Vacancy;
 use Illuminate\Http\Request;
 
@@ -70,7 +71,20 @@ class VacancysController extends Controller
     public function edit($id)
     {
         $vacancy = Vacancy::find($id);
-        return view('vacancy.edit', compact('vacancy'));
+        $interview = Interview::where('vacancy_id', $id)->whereNotIn('status', [6, 0])->get();
+        if($interview->count() > 0)
+            foreach($interview as $i)
+                $interviews[$i->status][] = $i;
+        $statuses = [
+            1 => 'Найденные',
+            2 => 'Тел. интервью',
+            3 => 'Тестовое задание',
+            4 => 'Собеседование',
+            5 => 'Собеседование с реководителем',
+            6 => 'Нащ сотрудник',
+            0 => 'Отказ'
+        ];
+        return view('vacancy.edit', compact('vacancy', 'interviews', 'statuses'));
     }
 
     /**

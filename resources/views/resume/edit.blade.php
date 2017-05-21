@@ -36,36 +36,36 @@
                 {{ Form::hidden('id', $resume->id) }}
                 <br>
                 <div class="form-group">
-                    {{ Form::label('name', 'Имя', ['class' => 'control-label col-sm-2']) }}
-                    <div class="col-sm-10">
+                    {{ Form::label('name', 'Имя', ['class' => 'control-label col-sm-3']) }}
+                    <div class="col-sm-9">
                         {{  Form::text('name', $resume->name, ['class' => 'form-control', 'data-validate' => 'required', 'data-message-required' => 'Поле обязательно для заполнения', "placeholder" => 'Имя'])}}
                     </div>
                 </div>
                 <div class="form-group-separator __web-inspector-hide-shortcut__"></div>
                 <div class="form-group">
-                    {{ Form::label('email', 'Email', ['class' => 'control-label col-sm-2']) }}
-                    <div class="col-sm-10">
+                    {{ Form::label('email', 'Email', ['class' => 'control-label col-sm-3']) }}
+                    <div class="col-sm-9">
                         {{  Form::text('email', $resume->email, ['class' => 'form-control', 'data-validate' => 'required', 'data-message-required' => 'Поле обязательно для заполнения', "placeholder" => 'Email'])}}
                     </div>
                 </div>
                 <div class="form-group-separator __web-inspector-hide-shortcut__"></div>
                 <div class="form-group">
-                    {{ Form::label('vacancy_id', 'Вакансия', ['class' => 'control-label col-sm-2']) }}
-                    <div class="col-sm-10">
-                        {{ Form::select('vacancy_id', $vacancy, $resume->vacancy_id, ['class' => 'form-control', 'data-validate' => 'required', 'data-message-required' => 'Поле обязательно для заполнения']) }}
+                    {{ Form::label('phone', 'Телефон', ['class' => 'control-label col-sm-3']) }}
+                    <div class="col-sm-9">
+                        {{  Form::text('phone', $resume->email, ['class' => 'form-control', 'data-validate' => 'required', 'data-message-required' => 'Поле обязательно для заполнения', "placeholder" => 'Телефон'])}}
                     </div>
                 </div>
                 <div class="form-group-separator __web-inspector-hide-shortcut__"></div>
                 <div class="form-group">
-                    {{ Form::label('description',  'Описание', ['class' => 'control-label col-sm-2']) }}
-                    <div class="col-sm-10">
+                    {{ Form::label('description',  'Описание', ['class' => 'control-label col-sm-3']) }}
+                    <div class="col-sm-9">
                         {{  Form::textarea('description', $resume->description, ['class' => 'form-control', "placeholder" => 'Описание роли'])}}
                     </div>
                 </div>
                 <div class="form-group-separator __web-inspector-hide-shortcut__"></div>
                 <div class="form-group">
-                    {{ Form::label('education', 'Образование', ['class' => 'control-label col-sm-2']) }}
-                    <div class="col-sm-10">
+                    {{ Form::label('education', 'Образование', ['class' => 'control-label col-sm-3']) }}
+                    <div class="col-sm-9">
                         <select name="education" id="" class="form-control">
                             <option value="1" @if($resume->education == 1) selected @endif>Среднее</option>
                             <option value="2" @if($resume->education == 2) selected @endif>Высшие - специалист</option>
@@ -76,21 +76,43 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    {{ Form::label('experience', 'Опыт работы в годах', ['class' => 'control-label col-sm-2']) }}
-                    <div class="col-sm-10">
+                    {{ Form::label('experience', 'Опыт работы в годах', ['class' => 'control-label col-sm-3']) }}
+                    <div class="col-sm-9">
                         {{  Form::number('experience', $resume->experience, ['class' => 'form-control', 'data-validate' => 'required', 'data-message-required' => 'Поле обязательно для заполнения', "placeholder" => 'Опыт работы в годах'])}}
                     </div>
                 </div>
                 <div class="form-group">
-                    {{ Form::label('university', 'Университет', ['class' => 'control-label col-sm-2']) }}
-                    <div class="col-sm-10">
+                    {{ Form::label('university', 'Университет', ['class' => 'control-label col-sm-3']) }}
+                    <div class="col-sm-9">
                         {{  Form::text('university', $resume->university, ['class' => 'form-control', "placeholder" => 'Университет'])}}
                     </div>
                 </div>
                 <div class="form-group-separator __web-inspector-hide-shortcut__"></div>
                 <div class="form-group">
-                    {{ Form::label('status', 'Статус', ['class' => 'control-label col-sm-2']) }}
-                    <div class="col-sm-10">
+                    {{ Form::label('source', 'Источник', ['class' => 'control-label col-sm-3']) }}
+                    <div class="col-sm-9">
+                        {{  Form::text('source', $resume->source, ['class' => 'form-control', "placeholder" => 'Источник'])}}
+                    </div>
+                </div>
+                <div class="form-group-separator __web-inspector-hide-shortcut__"></div>
+                <div class="form-group">
+                    {{ Form::label('link', 'Сылка на резюме', ['class' => 'control-label col-sm-3']) }}
+                    <div class="col-sm-9">
+                        {{  Form::text('link', $resume->link, ['class' => 'form-control', "placeholder" => 'Сылка на резюме'])}}
+                    </div>
+                </div>
+                <div class="form-group-separator __web-inspector-hide-shortcut__"></div>
+                <div class="form-group">
+                    {{ Form::label('position', 'Должность', ['class' => 'control-label col-sm-3']) }}
+                    <div class="col-sm-9">
+                        {{  Form::text('position', $resume->position, ['class' => 'form-control', "placeholder" => 'Должность'])}}
+                    </div>
+                </div>
+
+                <div class="form-group-separator __web-inspector-hide-shortcut__"></div>
+                <div class="form-group">
+                    {{ Form::label('status', 'Статус', ['class' => 'control-label col-sm-3']) }}
+                    <div class="col-sm-9">
                         <select name="status" id="" class="form-control">
                             <option value="1" @if($resume->status == 1) selected @endif>Молодой</option>
                             <option value="2" @if($resume->status == 2) selected @endif>Мало знает</option>
@@ -101,8 +123,8 @@
                 </div>
                 <div class="form-group-separator __web-inspector-hide-shortcut__"></div>
                 <div class="form-group">
-                    {{ Form::label('birthday', 'Опыт работы в годах', ['class' => 'control-label col-sm-2']) }}
-                    <div class="col-sm-10">
+                    {{ Form::label('birthday', 'Опыт работы в годах', ['class' => 'control-label col-sm-3']) }}
+                    <div class="col-sm-9">
                         {{  Form::text('birthday', \Carbon\Carbon::parse($resume->birthday)->format('Y-m-d'), ['class' => 'form-control datepicker', 'data-validate' => 'required', 'data-message-required' => 'Поле обязательно для заполнения', "placeholder" => 'Дата рождения', 'data-format' => 'yyyy-mm-dd'])}}
                     </div>
                 </div>
@@ -117,17 +139,17 @@
                 </div>
                 {{ Form::close() }}
             </div>
-            <div class="col-sm-6 profile-env">
-                {{ Form::open(['url' => 'resume/comment/' . $resume->id, 'method' => 'POST', 'class' => ' profile-post-form validate form-horizontal', "novalidate" => 'novalidate']) }}
+            <div class="col-sm-3 profile-env">
+                <p>Комментарии</p>
+                    {{ Form::open(['url' => 'resume/comment/' . $resume->id, 'method' => 'POST', 'class' => ' profile-post-form validate form-horizontal', "novalidate" => 'novalidate']) }}
                     {{ Form::hidden('id', $resume->id) }}
-                    {{ Form::textarea('comment', null,['class' => 'form-control input-unstyled input-lg autogrow', 'data-validate' => 'required', 'data-message-required' => 'Поле обязательно для заполнения',]) }}
+                    {{ Form::textarea('comment', null,['rows' => 3, 'class' => 'form-control input-unstyled input-lg autogrow', 'data-validate' => 'required', 'data-message-required' => 'Поле обязательно для заполнения',]) }}
                     <i class="el-edit block-icon"></i>
-
                     <ul class="list-unstyled list-inline form-action-buttons">
                     </ul>
                     <br>
-                    <button type="submit" class="btn btn-single btn-xs btn-success post-story-button">Post</button>
-                </form>
+                    <button type="submit" class="btn btn-single btn-xs btn-success post-story-button">Комментировать</button>
+                    {{ Form::close() }}
 
                 <section class="user-timeline-stories">
                     @forelse($comments as $comment)
@@ -148,9 +170,19 @@
                         </article>
                     @empty
                     @endforelse
-
                 </section>
-
+            </div>
+            <div class="col-sm-3">
+                Список вакансий
+                <ul>
+                    @forelse($interviews as $i)
+                        <li>
+                            <a href="{{ url('interview/' . $i->id. '/edit') }}">11</a>
+                        </li>
+                        @empty
+                        <li>Небыло назначено собеседований.</li>
+                        @endforelse
+                </ul>
             </div>
         </div>
     </div>
@@ -160,7 +192,6 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 {{ Form::open(['url' => 'interview/', 'method' => 'POST', 'class' => 'validate form-horizontal', "novalidate" => 'novalidate']) }}
-                {{ Form::hidden('vacancy_id', $resume->vacancy_id) }}
                 {{ Form::hidden('resume_id', $resume->id) }}
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -175,6 +206,12 @@
                         </div>
                         <div class="col-sm-4">
                             <input type="text" name="time" class="form-control timepicker" data-template="dropdown" data-show-seconds="false" data-default-time="{{ Carbon\Carbon::now()->format('H:i') }}" data-show-meridian="false" data-minute-step="10" data-second-step="5">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {{ Form::label('birthday', 'Вакансия', ['class' => 'control-label col-sm-4']) }}
+                        <div class="col-xs-8">
+                            {{  Form::select('vacancy_id', $vacancy, null, ['class' => 'form-control', 'data-validate' => 'required', 'data-message-required' => 'Поле обязательно для заполнения', "placeholder" => 'Вакансия']) }}
                         </div>
                     </div>
                 </div>
@@ -192,6 +229,9 @@
 
 @section('styles')
     <link rel="stylesheet" href="{{ url('assets/css/fonts/elusive/css/elusive.css') }}">
+    <style>
+        .profile-env .profile-post-form:after{display: none;}
+    </style>
 @endsection
 
 @section('scripts')

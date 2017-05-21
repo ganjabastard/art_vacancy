@@ -23,7 +23,6 @@
                     <th data-priority="1">Автор</th>
                     <th data-priority="1">Дата</th>
                     <th data-priority="1">Опыт</th>
-                    <th data-priority="1">Возраст</th>
                     <th data-priority="1">Статус</th>
                     <th data-priority="1">Настройка</th>
                 </tr>
@@ -43,15 +42,13 @@
                         <td>
                             {{ $vacancy->experience }}
                         </td>
-                        <td>
-                            {{ $vacancy->age_start. " - " . $vacancy->age_end }}
-                        </td>
                         <td class="">
                            @php
                                 switch($vacancy->status) {
-                                    case 1: $status = 'Новинка'; break;
-                                    case 2: $status = 'Горячая'; break;
-                                    case 3: $status = 'Постоянно'; break;
+                                    case 1: $status = 'Открыта'; break;
+                                    case 2: $status = 'Ожидает'; break;
+                                    case 3: $status = 'В работе'; break;
+                                    case 4: $status = 'Закрыта'; break;
                                     case 0: $status = 'Окончена'; break;
                                     default: $status = ''; break;
                                 }
