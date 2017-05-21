@@ -104,4 +104,11 @@ class InterviewController extends Controller
     {
         //
     }
+
+
+    public function calendar()
+    {
+        $interview = Interview::with(['vacancy'])->whereNotIn('status', [6,0])->get();
+        return view('calendar.index', compact('interview'));
+    }
 }

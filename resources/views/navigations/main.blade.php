@@ -18,6 +18,12 @@
         </a>
     </li>
     <li>
+        <a href="{{ url('calendar') }}">
+            <i class="fa-calendar"></i>
+            <span class="title">Календарь</span>
+        </a>
+    </li>
+    <li>
         <a href="{{ url('archive') }}">
             <i class="fa-archive"></i>
             <span class="title">Архив</span>
